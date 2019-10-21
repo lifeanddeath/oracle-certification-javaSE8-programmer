@@ -1,4 +1,4 @@
-# Oracle Certified Associate
+# Oracle Certified Associate J
 
 This repository will contain the artifects and notes during my preparation to Oracle Certified Associate, Java SE 8 Programmer exam.
 
