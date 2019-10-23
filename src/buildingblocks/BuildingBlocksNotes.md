@@ -33,4 +33,8 @@
 
 * When a new object is created, the object sets its variables and and runs the instance initializers.
 
-(Pdf page 19)
+* variable value can't be read if not initialized at the time of compilation, it'll cause compilation error.
+
+* class constuctor is called after instance initializers and variables are set.
+
+
