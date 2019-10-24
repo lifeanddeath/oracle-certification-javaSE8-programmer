@@ -85,4 +85,18 @@ double  b1, double b2; // wouldn't compile.
 
 * two different variables can only be in the same line when there is a semicolon in between.
 
+# Identifiers
+
+* The name should beging with a letter or symbol $ or _.
+* The name can also contain numbers.
+* Usage of reserved keywords are not allowed.
+
+* Legal name examples
+- okidentifier
+- $OK2Identifier
+- _alsoOK1d3ntifier
+- __SStillOkbutKnotsonice$
+
+
+
 
