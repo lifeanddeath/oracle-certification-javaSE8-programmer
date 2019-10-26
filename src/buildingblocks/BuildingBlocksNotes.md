@@ -97,6 +97,27 @@ double  b1, double b2; // wouldn't compile.
 - _alsoOK1d3ntifier
 - __SStillOkbutKnotsonice$
 
+* Not legal examples:
+
+- 3DPointclass -> identifiers cannot start with numbers
+- hollywood@vine -> @ is not a letter, digit or $
+- *$coffee -> * is not a letter, digit or $ or _
+- public public is a reserved keyword.
+
+
+# Initialization of Variables
+
+## Local Variables
+
+Local variables must be initialized before use. They do not have a default value and contain garbage data until initialized.
+
+## Instance and Class Variables 
+
+If a variable has a static keyword in its declaration, it means it is  class variable.
+
+# Understanding Variable Scope
+
+
 
 
 
