@@ -117,6 +117,30 @@ If a variable has a static keyword in its declaration, it means it is  class var
 
 # Understanding Variable Scope
 
+public void eat(int piecesOfCheese) {
+	int bitesOfCheese = 1;
+}
+
+In this example, there are two local variables. parameter methods are also considered as local parameters.
+*Local variables can never have a scope larger than the method they are defined in. However .they can have a smaller scope.Consider this example:
+
+
+*Class variables are the static variables whereas instance variables are defined inside the class like regular variables.
+
+* Package keyword should be on top of the java file, whereas imports are not mandatory.
+
+* Multiple classes can be defined in the same file, but only one of them is allowed to be public.
+
+* A file is also allowed to have neither class be public. As long as there isn't more than one public class in a file, it is okey.
+
+# Destroying Objects
+
+* Java provides  a garbage collector to automactically look for objects that aren't needed anymore.
+
+* All java objects are stored in your program memory's heap. The heap, which is also referred to as the free store, represents a large pool of unused memory aollocated to your Java application. The heap may be quite large, depending on your environment, but there is always a limit to its size. if you keep exhausting your heap memory, you'll eventually run out of memory.
+
+
+
 
 
 
