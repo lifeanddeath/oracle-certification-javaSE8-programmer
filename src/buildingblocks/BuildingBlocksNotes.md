@@ -139,6 +139,18 @@ In this example, there are two local variables. parameter methods are also consi
 
 * All java objects are stored in your program memory's heap. The heap, which is also referred to as the free store, represents a large pool of unused memory aollocated to your Java application. The heap may be quite large, depending on your environment, but there is always a limit to its size. if you keep exhausting your heap memory, you'll eventually run out of memory.
 
+# Garbage Collection
+
+* Garbage collection refers to the process of automatically freeing memory on the heap by deleting objects that are no longer reachable in your program. There are  many different algorithms for garbage collection.
+
+* System.gc() is a way to suggest to to JVM  to do this, but it can as well be ignored.
+
+# finalize 
+
+* Java allows objects to impelment a method called finalize() that might get called. This method gets called if the garbage collector tries to collect othe bojet. If the garbage  collector doesn't run, the method doesn't get called. If the garbage collector fails to collect the object and tries to run it again later, the method doesn't get called a second time.
+
+In practice, this mean you are highly unlikely to use it in real projects. Luckily, there isn't much remember to about this finalize().
+
 
 
 
