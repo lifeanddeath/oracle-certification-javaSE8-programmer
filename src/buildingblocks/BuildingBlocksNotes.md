@@ -57,7 +57,10 @@
 * when defining a long number , use the l postfix. 
 For example = long max = 332420930392L;
 
-* ``` int numGrains = 5.6;`` -> Wouldn't compile.
+
+ ``` 
+int numGrains = 5.6; // wouldn't compile
+```
 
 * When you deal with numbers you can alway use underscores to increase readability.
 
@@ -88,9 +91,30 @@ double  b1, double b2; // wouldn't compile.
 
 * two different variables can only be in the same line when there is a semicolon in between.
 
+* variables can't be bigger than their assigned types.
+
+Example:
+
+```
+int amount = 9L; // not OK
+long max = 234235353; // also not ok
+long max = 389345798435L; // now java knows it is a long.
+```
+
+* Octal(digits 0-7), which uses the number 0 as a prefix -- for example 017
+* Hexadecimal(0-9 and letters A-F), which uses the number 0 followed by x or X as a prefix - for example, 0xFF
+* binary(0-1), which uses the number 0 followed by b or B as aprefix - for example 0b10
+
+Examples
+
+	- System.out.println(56) // 56
+	- System.out.println(0b11) //3
+	- System.out.println(017) //15
+	- System.out.println(0x1F) //31
+
 # Identifiers
 
-* The name should beging with a letter or symbol $ or _.
+* The name should begin with a letter or symbol $ or _.
 * The name can also contain numbers.
 * Usage of reserved keywords are not allowed.
 
@@ -106,7 +130,6 @@ double  b1, double b2; // wouldn't compile.
 - hollywood@vine -> @ is not a letter, digit or $
 - *$coffee -> * is not a letter, digit or $ or _
 - public public is a reserved keyword.
-
 
 # Initialization of Variables
 
@@ -156,7 +179,7 @@ In practice, this mean you are highly unlikely to use it in real projects. Lucki
 
 # Package Declarations & Imports
 
-* Java puts classes in packages.
+* Java puts classes in packages. (but package names are optional in a file system).
 
 Two ways to import classes:
 
@@ -255,3 +278,30 @@ public class Conflicts {
 	java.sql.Date sqlDate;
 }
 ```
+
+# Varargs
+
+In java you can use <b>...</b> to specify a (zero to many) arguments for simplicity.
+
+For example:
+
+```
+public class MyClass {
+	public static void main(String... args) {
+	}
+}
+```
+
+is a legal definition.
+
+However it should be the last argument of the undertaking function. 
+
+```
+void displayValues(int a, int b, int ... values) // OK
+void displayValues(int a, int b, int ... values, int ... moreValues) //compilation error.
+```
+
+# Java Compiling Files
+
+-  Javac compiles a -java file into a .class file
+-  Java takes the name of the class as a parameter // .class is not used.
