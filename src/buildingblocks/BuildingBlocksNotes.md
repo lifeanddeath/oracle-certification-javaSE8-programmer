@@ -132,7 +132,7 @@ public void eat(int piecesOfCheese) {
 ```
 
 In this example, there are two local variables. parameter methods are also considered as local parameters.
-* Local variables can never have a scope larger than the method they are defined in. However .they can have a smaller scope.Consider this example:
+* Local variables can never have a scope larger than the method they are defined in. However, they can have a smaller scope.Consider this example:
 
 * Class variables are the static variables whereas instance variables are defined inside the class like regular variables.
 
@@ -152,10 +152,10 @@ In this example, there are two local variables. parameter methods are also consi
 
 * Garbage collection refers to the process of automatically freeing memory on the heap by deleting objects that are no longer reachable in your program. There are many different algorithms for garbage collection.
 
-* `System.gc()` is a way to suggest to to JVM  to do this, but it can as well be ignored.
+* `System.gc()` is a way to suggest to JVM to do this, but it can as well be ignored.
 
 # finalize 
 
 * Java allows objects to implement a method called `finalize()` that might get called. This method gets called if the garbage collector tries to collect other object. If the garbage collector doesn't run, the method doesn't get called. If the garbage collector fails to collect the object and tries to run it again later, the method doesn't get called a second time.
 
-In practice, this mean you are highly unlikely to use it in real projects. Luckily, there isn't much remember to about this `finalize()`.
+In practice, this means you are highly unlikely to use it in real projects. Luckily, there isn't much remember to about this `finalize()`.
