@@ -94,3 +94,33 @@ System.out.println(counter--); // Outputs 1
 System.out.println(counter); // Outputs 0
 ```
 
+How the following code would result?
+
+```
+int x = 3;
+int y = ++x * 5 / x-- + --x;
+
+System.out.println("x is" +x);
+System.out.println("y is" +y);
+```
+
+The solution would be as follows:
+
+```
+int y = 4*5/ x-- + --x; // x assigned value of 4
+```
+Next x, is decremented, but the original value of 4 is used in the expression, leading to this;
+
+```
+inz y = 4*5/4+ --x;
+```
+
+The final assignment of x reduces the value to 2, and since this is a pre-increment operator, that value is returned to the expression:
+
+```
+int y = 4*5/4+2
+```
+
+Finall as a result x = 2 and y = 7.
+
+
