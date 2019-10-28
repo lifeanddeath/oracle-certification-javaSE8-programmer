@@ -176,4 +176,34 @@ System.out.println(y); // also outputs 3
 
 They key here is that  (x=3) does two things. First, it sets the value of the variable x to be 3, Second, it returns a value of the  assignment, which is also 3.
 
+## Relational instanceof operator
 
+a instanceof b ---> True if the reference that a points to is an instance of a class, subclass, or class that implements a particular interface, as named in b.
+
+''
+
+## Equality Operations 
+
+1) Comparing two numeric primitive types.If the numeric values are of different data types, the values are automatically promoted as previously described.
+
+5 == 5.0 returns true since the left side is promoted to a double
+
+2) Comparing two boolean values.
+
+3) Comparing two objects, including null and String values.
+
+For the object comparison, the equality operator is applied to the references to the objects, not the objects they point to. Two references are equal if and only if they point to the same object, or both point to null.
+
+```
+file x = new File("myFile.txt");
+file y = new File("myFile.txt");
+
+File z = x;
+
+System.out.println(x == y); //outputs false
+System.out.println(x == z); //outputs true
+```
+
+# Java Statements
+
+Java statement is a complete unit of execution in Java, terminated with a semicolon.  
