@@ -207,3 +207,11 @@ System.out.println(x == z); //outputs true
 # Java Statements
 
 Java statement is a complete unit of execution in Java, terminated with a semicolon.  
+
+```
+int y = 1;
+int z = 1;
+final int x = y<10 ? y++ : z++;
+System.out.println(y+",",+z); // outputs 2,1
+```
+
