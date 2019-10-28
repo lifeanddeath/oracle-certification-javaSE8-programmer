@@ -57,7 +57,7 @@ short y = 3;
 
 In this case, both of the literals will be applied to rule number three, where they will be promoted to int before the operation, resulting an output of type int.
 
-What is the data tpye of x*y/z?
+What is the data type of x*y/z?
 
 ```
 short x = 14;
@@ -112,7 +112,7 @@ int y = 4*5/ x-- + --x; // x assigned value of 4
 Next x, is decremented, but the original value of 4 is used in the expression, leading to this;
 
 ```
-inz y = 4*5/4+ --x;
+int y = 4*5/4+ --x;
 ```
 
 The final assignment of x reduces the value to 2, and since this is a pre-increment operator, that value is returned to the expression:
@@ -121,6 +121,59 @@ The final assignment of x reduces the value to 2, and since this is a pre-increm
 int y = 4*5/4+2
 ```
 
-Finall as a result x = 2 and y = 7.
+Finally as a result x = 2 and y = 7.
+
+## Using Additional Binary Operators
+
+```
+int x = 1.0; //wouldn't compile
+short y = 3204823094; //wouldn't compile
+int z = 9f; //woudln't compile
+long t = 304983240293842309483029; //wouldn't compile
+```
+
+## Casting Primitive Values 
+
+```
+int x = (int) 1.0;
+short y = (short) 5454543; // stored as 20678
+int z = (int)9l;
+long t = 324309823094823042L;
+```
+
+Interesting example:
+
+```
+short x = 10;
+short y = 3;
+short z = x*y; // wouldn't compile
+```
+
+Trying to set a short variable to an int results in a compiler error.
+
+```
+short z = (short) x*y;
+```
+would compile.
+
+```
+long x = 10;
+int y = 5;
+y = y*x; // wouldn't compile because right hand side is in the type of long
+```
+
+Note: compound operator which is y*= x would cast thing automatically, and we wouldn't have a compilation error.
+
+Another interesting assignment example:
+
+```
+long x = 5;
+long y = (x=3); 
+
+System.out.println(x); // outputs 3
+System.out.println(y); // also outputs 3
+```
+
+They key here is that  (x=3) does two things. First, it sets the value of the variable x to be 3, Second, it returns a value of the  assignment, which is also 3.
 
 
