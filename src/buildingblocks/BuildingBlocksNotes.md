@@ -184,7 +184,7 @@ In this example, there are two local variables. parameter methods are also consi
 
 * Java allows objects to implement a method called `finalize()` that might get called. This method gets called if the garbage collector tries to collect other object. If the garbage  collector doesn't run, the method doesn't get called. If the garbage collector fails to collect the object and tries to run it again later, the method doesn't get called a second time.
 
-In practice, this mean you are highly unlikely to use it in real projects. Luckily, there isn't much remember to about this finalize().
+In practice, this means you are highly unlikely to use it in real projects. Luckily, there isn't much remember to about this finalize().
 
 # Package Declarations & Imports
 
@@ -196,7 +196,7 @@ Two ways to import classes:
 
 2) Direct class import declaration
 
- Every java class automatically imports `java.lang.
+ Every java class automatically imports `java.lang`.
 
 Example:
 
@@ -205,7 +205,7 @@ What inputs do we need for the following class?
 ```java
 public class InputImports {
 	public void read(Files files) {
-		Paths.get("name);
+		Paths.get("name");
 	}
 }
 ```
