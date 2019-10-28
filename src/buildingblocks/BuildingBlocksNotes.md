@@ -63,6 +63,11 @@
   long max = 332420930392L;
   ```
 
+
+ ``` 
+int numGrains = 5.6; // wouldn't compile
+```
+
 * When you deal with numbers you can always use underscores to increase readability.
 
 Underscores can be used anywhere but the beginning and the end of the literal in addition to before and after a decimal point sign.
@@ -74,6 +79,7 @@ double notAtEnd = 1000.00_;            // --> doesn't compile
 double notByDecimal =  10_.0           // --> doenst't compile
 double annoyingButLegal = 1_00_00.0_0; // --> annoying but compiles.
 ```
+
 
 ## Reference Types
 
@@ -94,9 +100,30 @@ Java doesnt allow us to learn the physical memory address.
 
 * two different variables can only be in the same line when there is a semicolon in between.
 
+* variables can't be bigger than their assigned types.
+
+Example:
+
+```
+int amount = 9L; // not OK
+long max = 234235353; // also not ok
+long max = 389345798435L; // now java knows it is a long.
+```
+
+* Octal(digits 0-7), which uses the number 0 as a prefix -- for example 017
+* Hexadecimal(0-9 and letters A-F), which uses the number 0 followed by x or X as a prefix - for example, 0xFF
+* binary(0-1), which uses the number 0 followed by b or B as aprefix - for example 0b10
+
+Examples
+
+	- System.out.println(56) // 56
+	- System.out.println(0b11) //3
+	- System.out.println(017) //15
+	- System.out.println(0x1F) //31
+
 # Identifiers
 
-* The name should beging with a letter or symbol $ or _.
+* The name should begin with a letter or symbol $ or _.
 * The name can also contain numbers.
 * Usage of reserved keywords are not allowed.
 
@@ -111,7 +138,6 @@ Java doesnt allow us to learn the physical memory address.
   - hollywood@vine -> @ is not a letter, digit or $
   - *$coffee -> * is not a letter, digit or $ or _
   - public public is a reserved keyword.
-
 
 # Initialization of Variables
 
@@ -156,6 +182,133 @@ In this example, there are two local variables. parameter methods are also consi
 
 # finalize 
 
-* Java allows objects to implement a method called `finalize()` that might get called. This method gets called if the garbage collector tries to collect other object. If the garbage collector doesn't run, the method doesn't get called. If the garbage collector fails to collect the object and tries to run it again later, the method doesn't get called a second time.
+* Java allows objects to implement a method called `finalize()` that might get called. This method gets called if the garbage collector tries to collect other object. If the garbage  collector doesn't run, the method doesn't get called. If the garbage collector fails to collect the object and tries to run it again later, the method doesn't get called a second time.
 
-In practice, this means you are highly unlikely to use it in real projects. Luckily, there isn't much remember to about this `finalize()`.
+In practice, this mean you are highly unlikely to use it in real projects. Luckily, there isn't much remember to about this finalize().
+
+# Package Declarations & Imports
+
+* Java puts classes in packages. (but package names are optional in a file system).
+
+Two ways to import classes:
+
+1) Wildcards
+
+2) Direct class import declaration
+
+ Every java class automatically imports `java.lang.
+
+Example:
+
+What inputs do we need for the following class?
+
+```java
+public class InputImports {
+	public void read(Files files) {
+		Paths.get("name);
+	}
+}
+```
+
+There are two possible answers. The shorter one is to use a wildcard to import both at the same time:
+
+```java
+import java.nio.file.*;
+```
+
+The other answer is to import both classes explicitly:
+
+```java
+import java.nio.file.Files;
+import java.nio.filePaths;
+```
+
+Let's consider some imports that wouldn't work:
+
+```java
+import java.nio.*; // No good - a wildcard only matches  class names, not "file.*FIles"
+import java.nio.*.*: // no good - you can only have one wildcard and it must be at the end.
+import java.nio.files.Paths.*; // No good - you cannot import methods, only class name
+```
+
+When a class is found in multiple packages, Java gives us an compilation error.
+
+# Naming Conflicts with Imports
+
+What imports would we need for the following class?
+
+```java
+public class Conflicts {
+	Date date;
+	// some more code
+}
+```
+The answer is <b>import java.util.*;</b> or <b>import java.util.Date;</b>.
+
+Tricky part comes when there are more than two imports are present.
+
+```java
+import java.util.*;
+import java.sql.*; // Does not compile
+```
+
+Because the class is found in multiple packages.
+
+```java
+import java.util.Date;
+import java.sql.*;
+```
+
+Now it would work, because if you explicitly import a class name, it takes precedence over any wildcards present. Then, Java thinks, "he will use this specific class".
+
+What would be the case with the following imports?
+
+```java
+import java.util.Date;
+import java.sql.Date;
+```
+
+If you really really need to use two classes with the same name...
+
+```java
+import java.util.Date;
+
+public class Conflicts {
+	Date date;
+	java.sql.Date sqlDate;
+}
+```
+
+or alternatively,
+
+```java
+public class Conflicts {
+	java.util.Date date;
+	java.sql.Date sqlDate;
+}
+```
+
+# Varargs
+
+In java you can use <b>...</b> to specify a (zero to many) arguments for simplicity.
+
+```java
+public class MyClass {
+	public static void main(String... args) {
+	}
+}
+```
+
+is a legal definition.
+
+However it should be the last argument of the undertaking function. 
+
+```java
+void displayValues(int a, int b, int ... values) // OK
+void displayValues(int a, int b, int ... values, int ... moreValues) // compilation error.
+```
+
+# Java Compiling Files
+
+-  Javac compiles a -java file into a .class file
+-  Java takes the name of the class as a parameter // .class is not used.
