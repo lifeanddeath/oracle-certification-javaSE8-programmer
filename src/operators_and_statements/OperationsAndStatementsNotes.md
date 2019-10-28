@@ -67,3 +67,30 @@ double z = 30;
 
 In this case, we must apply all of the rules. First x automatically be promoted to int solely because it is a short and it is being used in an arithmetic operation. The promoted X value will then be automatically promoted to a float so that it can be multiplied with y. The result of x*y will then be automatically promoted to a double, so that it can be divided by z. Result happens to be double.
 
+## Unary Operators 
+
+By definition, unary operators are the ones that require exactly one operand, or variable to function. They often perform simple tasks, such as increasing a numeric variable by one, or negating a boolean value.
+
+| +   | Indicates a number is positive, although numbers are assumed to be positive in java unless accompanied by a negative unary operator  |
+|-----|--------------------------------------------------------------------------------------------------------------------------------------|
+| -   | Indicates a literal number is negative or negates an expression                                                                      |
+|  ++ | Increments a value by 1                                                                                                              |
+| --  | Decrements a value by 1                                                                                                              |
+| !   | Inverts a Boolean's logical value     
+
+
+## Increment and Decrement Operators
+
+Increment and decrement operators , ++ and --, respectively, can be applied to numeric operands and have the higher order or precedence, as compared to binary operators.
+
+If the operator is placed before the operand, referred to as the pre-increment operator and the pre-decrement operator, then the operator is applied first and the value return is new value of the expression.Alternatively, if the operator is placed after the operand, referred to as the post-increment operator and the post-decrement operator, the original value of the expression is returned, with operator applied after the value is returned.
+
+```
+int counter = 0;
+System.out.println(counter); // Outputs 0
+System.out.println(++counter); //Outputs 1
+System.out.println(counter); // Outputs 1
+System.out.println(counter--); // Outputs 1
+System.out.println(counter); // Outputs 0
+```
+
