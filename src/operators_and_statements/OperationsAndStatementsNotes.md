@@ -215,3 +215,22 @@ final int x = y<10 ? y++ : z++;
 System.out.println(y+",",+z); // outputs 2,1
 ```
 
+# Switch Statement
+
+A switch statement is a complex decision-making structure in which a single value is evaluated and flow is redirected to the first matching branch, known as a case statement. If no such case statement is found that matches the value, an optional default statement will be called. If no such default option is available, the entire switch statement will be skipped.
+
+Data types supported by switch statements include the following:
+
+- int and Integer
+- byte and Byte
+- short and Short
+- char and Character
+- int and Integer
+- String
+- enum values
+
+As can be seen, boolean and long values are not supported.
+
+If break keyword is not used after each statement, the flow will be continued.
+
+After each case keyword you should write the data and then colon.
