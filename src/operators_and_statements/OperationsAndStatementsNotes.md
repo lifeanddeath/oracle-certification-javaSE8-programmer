@@ -244,3 +244,89 @@ A repetition control structure, which we refer to as a loop, executes a statemen
 ## do-While Statement
 
 The primary difference between the syntactic structure of a do-while loop and a while loop is that a do while loop purposely orders the statement or block of statements before the conditional expression, in order to reinforce that the statement will be executed before the expression is ever evaluated. 
+
+## For Loop
+
+A basic for loop has the same conditional boolean expression and statement, or block of statements, as theother loops you have seen, as well as two new sections: an initialization block and an update statement. 
+
+```
+for ( initialization; booleanExpression; updateStatement) {
+	/// body
+}
+```
+
+```
+int x = 0;
+for ( long  y=0, x=4; x<5 && y<10, x++, y++){
+	System.out.print(x+ " ");					// Does not compile because variable y is declared, then x is reassigned.
+}
+```
+
+This example would compile though.
+
+```
+int x = 0;
+long y = 10;
+for ( y=0, x=4; x<5 && y<10, x++, y++){
+	System.out.print(x+ " ");		
+}
+```
+
+The following example would also not compile because declaring variables should be in the same type.
+
+
+```
+for ( long y=0, int x=4; x<5 && y<10, x++, y++){
+	System.out.print(x+ " ");					// Does not compile because y and x are different types.
+}
+```
+
+## foreach statement
+
+```
+for( datatype instance: collection){
+	//body
+}
+```
+
+The for-each loop declaration is composed of an initialization section and an object to be iterated over. The right hand side of the for-each loop statement bust be a built in java array or an object who class implements  java. Iterable, which includes most of the Java Collections framework. The left- hand side of the for-each loop must include a declaration for an instance of a variable, whose type matches the type of a member of the array or collection in the right hand side of the statement.
+
+```
+java.util.List<String> values = new java.util.ArrayList<String>();
+values.add("Lisa");
+values.add("Kevin");
+values.add("Alex");
+
+for(String name: values) {
+	System.out.println(name);
+}
+```
+
+The following example wouldn't compile because the right hand side of the loop should be always a list or iterable!
+
+```
+String names = "Lisa";
+
+for(String name: names) {
+	System.out.println(name); // wouldn't compile
+}
+```
+
+Because its not an array nor does it implement java.lang.Iterable.
+
+
+```
+int[] values =new int[3];
+values[0] = 10;
+values[1] = new Integer(5);
+values[2] = 15;
+
+for(int i = 1; i<values.length; i++) {
+	System.out.println(values[i]- values[i-1]);
+}
+```
+
+the output result would be -5,10.
+
+
+
