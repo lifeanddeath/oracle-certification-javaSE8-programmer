@@ -234,3 +234,13 @@ As can be seen, boolean and long values are not supported.
 If break keyword is not used after each statement, the flow will be continued.
 
 After each case keyword you should write the data and then colon.
+
+Case statement values should be literal, enum constant, or final constant.
+
+## While Statement
+
+A repetition control structure, which we refer to as a loop, executes a statement of code multiple times in succession. By using non-constant variables, each repetition of statement may be different. For example, a statement that  iterates over a list of uniqeu names and outputs them would encounter a new name on every execution of the loop.
+
+## do-While Statement
+
+The primary difference between the syntactic structure of a do-while loop and a while loop is that a do while loop purposely orders the statement or block of statements before the conditional expression, in order to reinforce that the statement will be executed before the expression is ever evaluated. 
