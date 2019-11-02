@@ -328,5 +328,47 @@ for(int i = 1; i<values.length; i++) {
 
 the output result would be -5,10.
 
+## Optional Statements
+
+
+```
+int[][] myComplexArray = {{5,2,1,3},{3,9,8,9},{5,7,12,7}};
+OUTER_LOOP: for(int[] mySimpleArray : myComplexArray) {
+	INNER_LOOP: for(int i=0; i<mySimpleArray.length; i++) {
+		System.out.print(mySimpleArray[i]+"\t");
+	}
+	System.out.println();
+} 
+```
+
+## The break Statement
+
+```
+optionalLabel: while(booleanExpression) {
+	//body
+	
+	//somewhere in Loop
+	break optionalLabel;
+} 
+```
+
+## Continue Statement
+
+```
+optionalLabel: while(booleanExpression) {
+	//body
+	
+	//somewhere in Loop
+	continue optionalLabel;
+} 
+```
+
+While the break statement transfers control to the enclosing statement, the continue
+statement transfers control to the boolean expression that determines if the loop should
+continue. In other words, it ends the current iteration of the loop. Also like the break
+statement, the continue statement is applied to the nearest inner loop under execution
+using optional label statements to override this behavior.
+
+
 
 
