@@ -104,6 +104,29 @@ When a match is not found it returns -1.
 
 The method also looks for  characters in a string. It returns parts of the string. The first parameter is the index to start with for the returned string. As usual, this is a zero-based index. There is an optional second parameter, which is the end index you want to stop at. 
 
+```
+int substring(int beginIndex)
+int substring(int beginIndex, int endIndex)
+
+```
+
+```
+String string = "animals";
+System.out.println(string.substring(3)); // mals
+System.out.println(string.substring(string.indexOf('m'))); // mals
+System.out.println(string.substring(3, 4)); // m
+System.out.println(string.substring(3, 7)); // mals
+```
+
+
+```
+System.out.println(string.substring(3, 3)); // empty string
+System.out.println(string.substring(3, 2)); // throws exception
+System.out.println(string.substring(3, 8)); // throws exception
+```
+
+
+
 
 
 
