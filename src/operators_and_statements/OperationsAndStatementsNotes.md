@@ -67,6 +67,8 @@ double z = 30;
 
 In this case, we must apply all of the rules. First x automatically be promoted to int solely because it is a short and it is being used in an arithmetic operation. The promoted X value will then be automatically promoted to a float so that it can be multiplied with y. The result of x*y will then be automatically promoted to a double, so that it can be divided by z. Result happens to be double.
 
+When an operation is run, and the result is wanted to be stored in a smaller data type, it wouldn't compile.
+
 ## Unary Operators 
 
 By definition, unary operators are the ones that require exactly one operand, or variable to function. They often perform simple tasks, such as increasing a numeric variable by one, or negating a boolean value.
