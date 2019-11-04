@@ -168,9 +168,23 @@ System.out.println("abc".contains("B")); // false
 
 <b>replace()</b>
 
+The method does a simple search and replace on the string. There's a version that takes char paramters as well as a version that takes CharSequence parameters. A charsequence is a general way of representing several classes, including String and StringBuilder- It's called an interface.
 
+```
+System.out.println("abcabc".replace('a', 'A')); // AbcAbc
+System.out.println("abcabc".replace("a", "A")); // AbcAbc
 
+```
 
+<b>trim()</b>
 
+This method removes whitespace from the beginning and end of a String. Whitespace consists of spaces along with the \t (tab) and
+\n (newline) characters. Other characters, such as \r (carriage return), are also included in
+what gets trimmed
 
+```
+System.out.println("abc".trim()); // abc
+System.out.println("\t a b c\n".trim()); // a b c
+
+```
 
