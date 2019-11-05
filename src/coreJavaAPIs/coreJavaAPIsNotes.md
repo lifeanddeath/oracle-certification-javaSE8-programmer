@@ -509,8 +509,20 @@ When creating an array ourselves, it looks like what we have seen thus far. When
 public static void main(String[] args)
 public static void main(String args[])
 public static void main(String... args) // varargs
-
 ```
+
+## Multidimensional Arrays
+
+## Creating a Multidimensional Array
+
+ ```
+int[][] vars1; // 2D array
+int vars2 [][]; // 2D array
+int[] vars3[]; // 2D array
+int[] vars4 [], space [][]; // a 2D AND a 3D arrays
+```
+Array called space is a 3D array because it also gets one dimension from int keyword!.
+
 
 
 
