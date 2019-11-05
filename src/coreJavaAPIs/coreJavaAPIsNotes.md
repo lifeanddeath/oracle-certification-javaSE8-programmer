@@ -434,6 +434,17 @@ Object[] objects = strings;
 String[] againStrings = (String[]) objects;
 againStrings[0] = new StringBuilder();
 objects[0] = new StringBuilder();
+```
 
+## Using an Array
+
+Simple example with array:
+
+```
+String[] mammals = {"monkey", "chimp", "donkey"};
+System.out.println(mammals.length);  //3
+System.out.println(mammals[0]);		// monkey
+System.out.println(mammals[1]);     // chimp
+System.out.println(mammals[2]);		// donkey
 ```
 
