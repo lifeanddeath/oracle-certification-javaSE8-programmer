@@ -387,3 +387,53 @@ System.out.println(t1==t2); // false
 System.out.println(t1.equals(t2)); // false 
 ```
 
+## Understanding Java Arrays 
+
+an array is an area of memory on the heap with space for a designated number of elements. A String is implemented as an array with some methods that you might want to use when dealing with characters specifically. A StringBuilder is implemented as an array where the array object is replaced with a new bigger array object when it runs out of space to store all the characters. A big difference is that an array can be of any other Java type. 
+
+```
+char[] letters;
+```
+
+## Creating an Array of Primitives
+The most common way to create an array looks like this:
+
+```
+int[] numbers1 = new int[3];
+```
+
+Another way of creating an array:
+
+```
+int[] numbers2 = new int[]{42,55,99};
+```
+
+Also, all the following declerations are valid:
+
+```
+int[] numAnimals;
+int [] numAnimals2;
+int numAnimals3[];
+int numAnimals4 [];
+```
+
+Let's look at this example:
+
+```
+String [] bugs = { "cricket", "beetle", "ladybug" };
+String [] alias = bugs;
+System.out.println(bugs.equals(alias)); // true
+System.out.println(bugs.toString()); // [Ljava.lang.String;@160bc7c0
+```
+
+These operations can be done with arrays too:
+
+```
+String[] strings = { "stringValue" };
+Object[] objects = strings;
+String[] againStrings = (String[]) objects;
+againStrings[0] = new StringBuilder();
+objects[0] = new StringBuilder();
+
+```
+
