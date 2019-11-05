@@ -13,7 +13,7 @@ Three rules about concatenations:
 
 1) If both operands are numeric, + means numeric addition.
 
-2) If either operand is String , ü means concatenation.
+2) If either operand is String , + means concatenation.
 
 3) The expression is evaluated left to right.
 
@@ -53,8 +53,8 @@ String name = "Fluffy";
 String name = new String("Fluffy");
 
 The former says to use the string pool normally. The second says “No, JVM. I really
-don’t want you to use the string pool. Please create a new object for me even though it is
-less efficient.” When you write programs, you wouldn’t want to do this. For the exam, you
+don't want you to use the string pool. Please create a new object for me even though it is
+less efficient.When you write programs, you wouldn't want to do this. For the exam, you
 need to know that it is allowed.
 
 ## Important String Methods
@@ -186,5 +186,25 @@ what gets trimmed
 System.out.println("abc".trim()); // abc
 System.out.println("\t a b c\n".trim()); // a b c
 
+```
+
+## Method Chaining
+
+It is common to call multiple methods on the same String, as shown here:
+
+```
+String start = "AnimaL   ";
+String trimmed = start.trim();
+String lowercase = trimmed.toLowerCase(); // "animal"
+String result = lowercase.replace('a', 'A'); // "Animal"
+System.out.println(result);
+
+```
+
+this code is equivalent to:
+
+```
+String result = "AniMaL ".trim().toLowerCase().replace('a', 'A');
+System.out.println(result);
 ```
 
