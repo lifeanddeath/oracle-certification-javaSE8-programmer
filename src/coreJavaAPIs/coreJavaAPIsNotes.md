@@ -448,3 +448,48 @@ System.out.println(mammals[1]);     // chimp
 System.out.println(mammals[2]);		// donkey
 ```
 
+## Sorting
+
+Java makes it easy to sort on array by providing a sort method, a bunch of sort methods.
+
+```
+int[] numbers = { 6, 9, 1 };
+Arrays.sort(numbers);
+for (int i = 0; i < numbers.length; i++)
+L System.out.print (numbers[i] + " "); // 1 6 9
+```
+ However, in this example things get tricky:
+ 
+ ```
+String[] strings = { "10", "9", "100" };
+Arrays.sort(strings);
+for (String string : strings)
+System.out.print(string + " ");  // 10 100 9 because it sorts alphabetically
+```
+
+## Searching
+
+Java also provides a convenient way to search-- but only if the array is already sorted.
+
+Binary Search Rules:
+
+Target element found in sorted array --> index of match
+
+Target element not found in sorted array --> Negative value showing one smaller than the negative of index, where a match needs to be inserted to preserve sorted order.
+
+Unsorted array --> A suprise- this result isn't predictable.
+
+Example case:
+
+ ```
+int[] numbers = {2,4,6,8};
+System.out.println(Arrays.binarySearch(numbers, 2)); // 0
+System.out.println(Arrays.binarySearch(numbers, 4)); // 1
+System.out.println(Arrays.binarySearch(numbers, 1)); // -1
+System.out.println(Arrays.binarySearch(numbers, 3)); // -2
+System.out.println(Arrays.binarySearch(numbers, 9)); // -5
+
+```
+
+
+
