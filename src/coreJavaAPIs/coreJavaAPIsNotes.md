@@ -311,3 +311,30 @@ StringBuilder sb = new StringBuilder("abcdef");
 sb.delete(1,3);   // sb = adef
 sb.deleteCharAt(5) //throws an exception
 ```
+
+<b>reverse()</b>
+
+This method does just what it sounds like, reversing the characters in the sequences and returns a reference to the current StringBuilder. The method signature is as follows:
+
+StrinbBuilder reverse()
+
+```
+StringBuilder sb = new StringBuilder("ABC");
+sb.reverse();
+System.out.println(sb); //prints CBA
+```
+<b>toString()</b>
+
+This method converts a StringBuilder into a String. 
+
+```
+String s = sb.toString();
+```
+
+## StringBuilder vs StringBuffer
+
+When writing new code that concatenates a lot of String objects  together, we should use StringBuilder. StringBuilder was added to Java in Java 5. If we come across older code, we will see Stringbuffer used for this purpose. it does the same thing but more slowly because it is thread safe.
+
+## Understanding Equality
+
+
