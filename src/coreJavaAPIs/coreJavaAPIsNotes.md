@@ -208,3 +208,56 @@ String result = "AniMaL ".trim().toLowerCase().replace('a', 'A');
 System.out.println(result);
 ```
 
+## Using StringBuilder Class
+
+A small program can create a lot of String objects very quickly. For example, how many would we have in the following code?
+
+
+```
+String alpha = "";
+for (chat current = 'a'; current <= 'z'; current++) {
+	alpha += current;
+}
+
+System.out.println(alpha);
+```
+
+This method creates 26 iterations and 26 interim objects that are eligible for garbage collection making it very inefficient.
+
+To prevent this, we could use StringBuilder class.
+
+```
+StringBuilder alpha = new StringBuilder();
+for (chat current = 'a'; current <= 'z'; current++) {
+	alpha.append(current);
+}
+System.out.println(alpha);
+```
+
+## Mutability and Chaining 
+
+```
+StringBuilder sb = new StringBuilder("start");
+sb.append("+middle");  						 // sb  = "start+middle"
+StringBuilder same = sb.append("+end");				// "start+middle+end"
+```
+
+In the following code:
+
+```
+StringBuilder a = new StringBuilder("abc");
+StringBuilder b = a.append("de");
+b = b.append("f").append("g");
+System.out.println("a=" + a);
+System.out.println("b=" + b);
+```
+
+both of the outputs will be "abcdefg", because there is only one StrinbBuilder object is created in line 1. Then stringbuilder b simply refers to the same object.
+
+There are officially three ways to construct a StringBuilder:
+
+```
+StringBuilder sb1 = new StrinBuilder();
+StringBuilder sb2 = new StringBuilder("animal");
+StringBuilder sb3 = new StringBuilder(10); // this specifies the capacity not the size!
+```
