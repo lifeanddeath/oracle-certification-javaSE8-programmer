@@ -337,4 +337,33 @@ When writing new code that concatenates a lot of String objects  together, we sh
 
 ## Understanding Equality
 
+```
+StringBuilder one = new StringBuilder();
+StringBuilder two = new StringBuilder();
+StringBuilder three = one.append("a");
+System.out.println(one == two); //false
+System.out.println(one == three); // true
+```
 
+Another confusing example:
+
+```
+String x = "Hello World";
+String y = "Hello World";
+System.out.println(x==y); //true
+```
+
+We see that Strings are immutable and literals are pooled. The JVM created only one literal in memory. x and y both point to the same location in memory;therefore, the statement outputs true.
+
+```
+String x = "Hello World";
+String y = "Hello World".trim();
+System.out.println(x==y); //false
+```
+A bit more confusing example: 
+
+```
+String x = new String("Hello World");
+String y = "Hello World";
+System.out.println(x==y); //false
+```
