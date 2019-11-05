@@ -261,3 +261,20 @@ StringBuilder sb1 = new StrinBuilder();
 StringBuilder sb2 = new StringBuilder("animal");
 StringBuilder sb3 = new StringBuilder(10); // this specifies the capacity not the size!
 ```
+
+## Important StringBuilder Methods
+
+As with String, we aren't going to cover every single method in the StringBuilder class. 
+
+<b>charAt(), indexOf(), length(), substring()</b>
+
+These four methods work exactly the same as in the String class. 
+
+```
+StringBuilder sb = new StringBuilder("animals");
+String sub = sb.substring(sb.indexOf("a"), sb.indexOf("al"));
+int len = sb.length();
+char ch = sb.charAt(6);
+System.out.println(sub + " " + len + " " + ch);
+
+```
