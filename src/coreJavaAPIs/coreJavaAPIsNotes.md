@@ -491,5 +491,27 @@ System.out.println(Arrays.binarySearch(numbers, 9)); // -5
 
 ```
 
+What will be the output of the following example?
+
+ ```
+int numbers = new int[] {3,2,1};
+System.out.println(Arrays.binarySearch(numbers, 2));
+System.out.println(Arrays.binarySearch(numbers, 3));
+```
+
+The array isn't sorted. This means the output will not be predictable. 
+
+## Varargs
+
+When creating an array ourselves, it looks like what we have seen thus far. When one is passed to our method, there is another way it can look.
+
+ ```
+public static void main(String[] args)
+public static void main(String args[])
+public static void main(String... args) // varargs
+
+```
+
+
 
 
