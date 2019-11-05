@@ -275,6 +275,39 @@ StringBuilder sb = new StringBuilder("animals");
 String sub = sb.substring(sb.indexOf("a"), sb.indexOf("al"));
 int len = sb.length();
 char ch = sb.charAt(6);
-System.out.println(sub + " " + len + " " + ch);
+System.out.println(sub + " " + len + " " + ch);  //prints anim 7 s
 
+```
+
+<b>append()</b>
+
+The append method is bay far the most frequently used method in StringBuilder. In fact, it is so frequently used that we just started using it without comment.
+
+Examples:
+
+```
+StringBuilder sb =  new StringBuilder().append(1).append('c');
+sb.append("-").append(true);
+System.out.println(sb); // 1c-true
+
+```
+
+<b>insert()</b>
+
+The insert() method adds characters to the StringBuilder at the requested index and returns a reference to the current StringBuilder. Just like append(),there are lots of method signatures for different types.
+
+```
+StringBuilder sb = new StringBuilder("animals);
+sb.insert(7, "-");    // sb = animals-
+sb.insert(0, "-");	// sb = -animals-
+sb.insert(4, "-");	// sb = -ani-mals
+system.out.println(sb);
+```
+
+<b>delete() and deleteCharAt()</b>
+
+```
+StringBuilder sb = new StringBuilder("abcdef");
+sb.delete(1,3);   // sb = adef
+sb.deleteCharAt(5) //throws an exception
 ```
