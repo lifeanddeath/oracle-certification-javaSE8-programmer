@@ -367,3 +367,23 @@ String x = new String("Hello World");
 String y = "Hello World";
 System.out.println(x==y); //false
 ```
+
+Another example:
+
+```
+String x = "Hello World;
+String y = "Hello World".trim();
+System.out.println(x.equals(z)); //true
+```
+
+Example with objects:
+
+```
+Tiger t1 = new Tiger();
+tiger t2 = new Tiget();
+Tiger t3 = t1;
+System.out.println(t1==t1); // true
+System.out.println(t1==t2); // false
+System.out.println(t1.equals(t2)); // false 
+```
+
