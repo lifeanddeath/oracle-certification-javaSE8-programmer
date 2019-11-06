@@ -721,3 +721,14 @@ It actually outputs 1.
 9: System.out.println(stringArray.length); // 2
 ```
 
+And here is an example about how to change an Array to List:
+
+ ```
+20: String[] array = { "hawk", "robin" }; // [hawk, robin]
+21: List<String> list = Arrays.asList(array); // returns fixed size list
+22: System.out.println(list.size()); // 2
+23: list.set(1, "test"); // [hawk, test]
+24: array[0] = "new"; // [new, test]
+25: for (String b : array) System.out.print(b + " "); // new test
+26: list.remove(1); // throws UnsupportedOperation Exception
+```
