@@ -561,3 +561,73 @@ You can also add an element based on desired position:
 8: birds.add(1, "cardinal"); // [blue jay, cardinal, hawk, robin]
 9: System.out.println(birds); // [blue jay, cardinal, hawk, robin]
 ```
+
+<b>remove()</b>
+
+The method removes the first matching value in the ArrayList or remove the element at a specified index. The method signatures are as follows:
+
+boolean remove ( Object object )
+E remove (index)
+
+ ```
+3: List<String> birds = new ArrayList<>();
+4: birds.add("hawk"); // [hawk]
+5: birds.add("hawk"); // [hawk, hawk]
+6: System.out.println(birds.remove("cardinal")); // prints false
+7: System.out.println(birds.remove("hawk")); // prints true
+8: System.out.println(birds.remove(0)); // prints hawk
+9: System.out.println(birds); // []
+```
+
+<b>set()</b>
+
+The set method changes one of the elements of the ArrayList without changing the size. The method signature is as follows:
+
+E set(int index, E newElement)
+
+The E return type is the element that got replaced.
+
+ ```
+15: List<String> birds = new ArrayList<>();
+16: birds.add("hawk"); // [hawk]
+17: System.out.println(birds.size()); // 1
+18: birds.set(0, "robin"); // [robin]
+19: System.out.println(birds.size()); // 1
+20: birds.set(1, "robin"); // IndexOutOfBoundsException
+```
+
+<b>isEmpty() and size()</b>
+
+The isEmpty() and size() methods look at how many of the slots are in use. The method signatures are as follows:
+
+boolean isEmpty()
+
+int size()
+
+ ```
+System.out.println(birds.isEmpty()); // true
+System.out.println(birds.size()); // 0
+birds.add("hawk"); // [hawk]
+birds.add("hawk"); // [hawk, hawk]
+System.out.println(birds.isEmpty()); // false
+System.out.println(birds.size()); // 2
+```
+
+<b>clear()</b>
+
+The clear method provides an easy way to discard all elements of the ArrayList.The method signature is as follows: 
+
+void clean()
+
+The following shows how to use this method:
+
+ ```
+List<String> birds = new ArrayList<>();
+birds.add("hawk"); // [hawk]
+birds.add("hawk"); // [hawk, hawk]
+System.out.println(birds.isEmpty()); // false
+System.out.println(birds.size()); // 2
+birds.clear(); // []
+System.out.println(birds.isEmpty()); // true
+System.out.println(birds.size()); // 0
+```
