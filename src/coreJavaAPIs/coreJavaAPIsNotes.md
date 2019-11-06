@@ -631,3 +631,55 @@ birds.clear(); // []
 System.out.println(birds.isEmpty()); // true
 System.out.println(birds.size()); // 0
 ```
+
+<b>contains()</b>
+
+the method checks whether a certain value is in the ArrayList. The method signature is as follows. 
+
+boolean contains ( Object object)
+
+The following shows how to use this method:
+
+ ```
+List<String> birds = new ArrayList<>();
+birds.add("hawk"); // [hawk]
+System.out.println(birds.contains("hawk")); // true
+System.out.println(birds.contains("robin")); // false
+```
+
+<b>equals()</b>
+
+Finally ArrayList has a custom implementation of equals() so you can comapre two lists to see if they contain the same elements in the same order.
+
+boolean equals(Objects object)
+
+ ```
+31: List<String> one = new ArrayList<>();
+32: List<String> two = new ArrayList<>();
+33: System.out.println(one.equals(two)); // true
+34: one.add("a"); // [a]
+35: System.out.println(one.equals(two)); // false
+36: two.add("a"); // [a]
+37: System.out.println(one.equals(two)); // true
+38: one.add("b"); // [a,b]
+39: two.add(0, "b"); // [b,a]
+40: System.out.println(one.equals(two)); // false
+```
+
+## Wrapper Classes
+
+The wrapper classes also have a method that converts back to a primitive. We don't need to know much about the constructors or intValue() type methods for the exam because auto-boxing has removed the need for them. You might encounter this syntax on questions that have been on the exam for many years. 
+
+There are also methods for converting a String to a primitive or wrapper class. The pase methods, such as parseInt(), return a primitive, and the valueOf() method returns a wrapper class. This is easy to remember because the name of the returne prmitive is in the methdo name. For example: 
+
+ ```
+int primitive = Integer.parseInt("123");
+Integer wrapper = Integer.valueOf("123");
+```
+
+The first line converts a String to an int primitive. The second converts a String to an Integer wrapper class. If the String passed in is not valid for the given type, Java throws an exception. In these examples, letters and dots are not valid for an integer value:
+
+ ```
+int bad1 = Integer.parseInt("a"); // throws NumberFormatException
+Integer bad2 = Integer.valueOf("123.45"); // throws NumberFormatException
+```
