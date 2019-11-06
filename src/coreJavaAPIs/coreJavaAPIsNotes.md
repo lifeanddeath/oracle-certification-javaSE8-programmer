@@ -523,7 +523,41 @@ int[] vars4 [], space [][]; // a 2D AND a 3D arrays
 ```
 Array called space is a 3D array because it also gets one dimension from int keyword!.
 
+## ArrayLists
 
+ArrayList has many methods , but you only need to know a handful of them, even fewer than you did for String and StringBuilder.
+We should also know that ArrayList implements toString() so that we can see the contents just by printing it.
 
+<b>add()</b>
 
+The add method  inserts a new value in the ArrayList. The method signatures are as follows.
 
+boolean add(E element)
+
+void add(int index, E element)
+
+ ```
+ArrayList list = new ArrayList();
+list.add("hawk"); // [hawk]
+list.add(Boolean.TRUE); // [hawk, true]
+System.out.println(list); // [hawk, true]
+```
+
+ArrayList type should be defined beforehands.
+
+ ```
+ArrayList<String> safer = new ArrayList<>();
+safer.add("sparrow");
+safer.add(Boolean.TRUE); // DOES NOT COMPILE
+```
+
+You can also add an element based on desired position:
+
+ ```
+4: List<String> birds = new ArrayList<>();
+5: birds.add("hawk"); // [hawk]
+6: birds.add(1, "robin"); // [hawk, robin]
+7: birds.add(0, "blue jay"); // [blue jay, hawk, robin]
+8: birds.add(1, "cardinal"); // [blue jay, cardinal, hawk, robin]
+9: System.out.println(birds); // [blue jay, cardinal, hawk, robin]
+```
