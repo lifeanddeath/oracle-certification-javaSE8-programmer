@@ -683,3 +683,41 @@ The first line converts a String to an int primitive. The second converts a Stri
 int bad1 = Integer.parseInt("a"); // throws NumberFormatException
 Integer bad2 = Integer.valueOf("123.45"); // throws NumberFormatException
 ```
+
+## Autoboxing
+
+We can just type the primitive value and Java will convert it to the relevant wrapper class for us. This is called autoboxing. 
+
+ ```
+4: List<Double> weights = new ArrayList<>();
+5: weights.add(50.5); // [50.5]
+6: weights.add(new Double(60)); // [50.5, 60.0]
+7: weights.remove(50.5); // [60.0]
+8: double first = weights.get(0); // 60.0
+```
+
+What would be the output of the following code?
+
+ ```
+List<Integer> numbers = new ArrayList<>();
+numbers.add(1);
+numbers.add(2);
+numbers.remove(1);
+System.out.println(numbers);
+```
+
+It actually outputs 1. 
+
+
+## converting Between Array and List
+
+ ```
+3: List<String> list = new ArrayList<>();
+4: list.add("hawk");
+5: list.add("robin");
+6: Object[] objectArray = list.toArray();
+7: System.out.println(objectArray.length); // 2
+8: String[] stringArray = list.toArray(new String[0]);
+9: System.out.println(stringArray.length); // 2
+```
+
