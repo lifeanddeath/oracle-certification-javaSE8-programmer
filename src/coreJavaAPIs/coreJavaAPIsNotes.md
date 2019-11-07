@@ -732,3 +732,28 @@ And here is an example about how to change an Array to List:
 25: for (String b : array) System.out.print(b + " "); // new test
 26: list.remove(1); // throws UnsupportedOperation Exception
 ```
+
+## Dates and Times
+
+## Creating Dates and Times
+
+
+<b>LocalDate</b>
+
+Contains just a date -- no time and no time zone . A good example of LocalDate is our birthday this year. It is our birthday for a full day regardless of what time it is.
+
+<b>LocalTime</b>
+
+Contains just a time -- no date and no time zone. A good example of LocalTime is midnight. It is midnight at the same time every day.
+
+<b>LocalDateTime</b>
+
+Contains both a date and time but no time zone. A good example of LocalDateTime is the stroke of midnight on New Year's. Midnight on January 2 isn't nearly as special, and clearly an hour after midnight isn't as special either.
+
+ ```
+System.out.println(LocalDate.now());  // 2015.01.20
+System.out.println(LocalTime.now());  // 12:45:18.401
+System.out.println(LocalDateTime.now()); // 2015-01--20T12:45:18.401
+
+```
+
