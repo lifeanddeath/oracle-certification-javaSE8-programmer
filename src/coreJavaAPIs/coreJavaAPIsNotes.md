@@ -784,3 +784,124 @@ In exam it might be tricky to distinguish this:
  ```
 LocalDate d = new LocalDate(); // DOES NOT COMPILE
 ```
+
+Or if we go out of the boundaries:
+
+ ```
+LocalDate.of(2015, Month.JANUARY, 32) // throws DateTimeException
+```
+
+## Manipulating Dates and Times
+
+ ```
+12: LocalDate date = LocalDate.of(2014, Month.JANUARY, 20);
+13: System.out.println(date); // 2014-01-20
+14: date = date.plusDays(2);
+15: System.out.println(date); // 2014-01-22
+16: date = date.plusWeeks(1);
+17: System.out.println(date); // 2014-01-29
+18: date = date.plusMonths(1);
+19: System.out.println(date); // 2014-02-28
+20: date = date.plusYears(5);
+21: System.out.println(date); // 2019-02-28
+```
+
+This time, lets work with LocalDateTime:
+
+ ```
+22: LocalDate date = LocalDate.of(2020, Month.JANUARY, 20);
+23: LocalTime time = LocalTime.of(5, 15);
+24: LocalDateTime dateTime = LocalDateTime.of(date, time);
+25: System.out.println(dateTime); // 2020-01-20T05:15
+26: dateTime = dateTime.minusDays(1);
+27: System.out.println(dateTime); // 2020-01-19T05:15
+28: dateTime = dateTime.minusHours(10);
+29: System.out.println(dateTime); // 2020-01-18T19:15
+30: dateTime = dateTime.minusSeconds(30);
+31: System.out.println(dateTime); // 2020-01-18T19:14:30
+```
+
+This can also be written as:
+
+ ```
+LocalDate date = LocalDate.of(2020, Month.JANUARY, 20);
+LocalTime time = LocalTime.of(5, 15);
+LocalDateTime dateTime = LocalDateTime.of(date2, time)
+.minusDays(1).minusHours(10).minusSeconds(30);
+```
+
+What would be the output of the following code?
+
+ ```
+LocalDate date = LocalDate.of(2020, Month.JANUARY, 20);
+date.plusDays(10);
+System.out.println(date);
+```
+
+It prints January 20, 2020. Adding 10 days was useless because we ignored the result. Whenever we see immutable types, we gotta pay attention to make sure the return value of a method call isn't ignored.
+
+Also here:
+
+ ```
+LocalDate date = LocalDate.of(2020, Month.JANUARY, 20);
+date = date.plusMinutes(1); // DOES NOT COMPILE
+```
+
+## Working with Periods:
+
+Let's imagine, our zoo performs animal enrichment activities to give the animals something fun to do. The head zookeeper has decided to switch toys every month. This system will continue for three months to see how it works out. 
+
+ ```
+public static void main(String[] args) {
+	LocalDate start = LocalDate.of(2015, Month.JANUARY, 1);
+	LocalDate end = LocalDate.of(2015, Month.MARCH, 30);
+	performAnimalEnrichment(start, end);
+}
+
+private static void performAnimalEnrichment(LocalDate start, LocalDate end) {
+	LocalDate upTo = start;
+	while (upTo.isBefore(end)) { // check if still before end
+	System.out.println("give new toy: " + upTo);
+	upTo = upTo.plusMonths(1); // add a month
+}}
+```
+
+We should shorten this by using java periods
+
+ ```
+public static void main(String[] args) {
+	LocalDate start = LocalDate.of(2015, Month.JANUARY, 1);
+	LocalDate end = LocalDate.of(2015, Month.MARCH, 30);
+	Period period = Period.ofMonths(1); // create a period
+	performAnimalEnrichment(start, end, period);
+}
+private static void performAnimalEnrichment(LocalDate start, LocalDate end,
+	Period period) { // uses the generic period
+	LocalDate upTo = start;
+	while (upTo.isBefore(end)) {
+	System.out.println("give new toy: " + upTo);
+	upTo = upTo.plus(period); // adds the period
+}}
+```
+
+There are different ways to instantiate period class:
+
+ ```
+Period annually = Period.ofYears(1); // every 1 year
+Period quarterly = Period.ofMonths(3); // every 3 months
+Period everyThreeWeeks = Period.ofWeeks(3); // every 3 weeks
+Period everyOtherDay = Period.ofDays(2); // every 2 days
+Period everyYearAndAWeek = Period.of(1, 0, 7); // every year and 7 days
+```
+
+Let's see what objects can be used with period class:
+
+ ```
+3: LocalDate date = LocalDate.of(2015, 1, 20);
+4: LocalTime time = LocalTime.of(6, 15);
+5: LocalDateTime dateTime = LocalDateTime.of(date, time);
+6: Period period = Period.ofMonths(1);
+7: System.out.println(date.plus(period)); // 2015-02-20
+8: System.out.println(dateTime.plus(period)); // 2015-02-20T06:15
+9: System.out.println(time.plus(period)); // UnsupportedTemporalTypeException
+```
