@@ -905,3 +905,32 @@ Let's see what objects can be used with period class:
 8: System.out.println(dateTime.plus(period)); // 2015-02-20T06:15
 9: System.out.println(time.plus(period)); // UnsupportedTemporalTypeException
 ```
+## Formatting Dates and Times
+
+The date and time class support many methods to get data out of them.
+
+ ```
+LocalDate date = LocalDate.of(2020, Month.JANUARY, 20);
+System.out.println(date.getDayOfWeek()); // MONDAY
+System.out.println(date.getMonth()); // JANUARY
+System.out.println(date.getYear()); // 2020
+System.out.println(date.getDayOfYear()); // 20
+```
+
+We could use DatatimeFormatter to change the format of the data.
+
+ ```
+LocalDate date = LocalDate.of(2020, Month.JANUARY, 20);
+LocalTime time = LocalTime.of(11, 12, 34);
+LocalDateTime dateTime = LocalDateTime.of(date, time);System.out.println(date
+.format(DateTimeFormatter.ISO_LOCAL_DATE));
+System.out.println(time.format(DateTimeFormatter.ISO_LOCAL_TIME));
+System.out.println(dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+```
+
+Alternatively, we can create our own format:
+
+ ```
+ DateTimeFormatter f = DateTimeFormatter.ofPattern("MMMM dd, yyyy, hh:mm");
+System.out.println(dateTime.format(f)); // January 20, 2020, 11:12
+```
