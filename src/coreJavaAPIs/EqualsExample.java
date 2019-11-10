@@ -26,6 +26,11 @@ public class EqualsExample {
 	    
 	    String b  = "example";
 	    if (b == "example")  System.out.println("this works"); // it does work
+	    
+	    String c = "example2";
+	    c = c.concat("3");
+	    System.out.println("c is: " + c);
+	    if (c == "example23") System.out.println("this works with concat"); // it doesn't work.
 	}
 
 }
