@@ -20,6 +20,8 @@ String s = "Hello";
 
 In string and string builder questions, it is important to control that == operator is used for object and type reference, whereas equals is only for comparing values.
 
+Equals operator doesn't care about the types. It just checks whether two values are identical or not.
+
 ## Concatenation 
 
 Placing one String before the other String and combining them together is called string concatenation. 
