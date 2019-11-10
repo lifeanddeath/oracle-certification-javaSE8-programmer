@@ -3,6 +3,7 @@
 ## Creating and Manipulating Strings
 
 String name = "Fluffy;
+
 String name =  new String("Fluffy");
 
 Interesting Example:
