@@ -847,6 +847,9 @@ LocalDate.of(2015, Month.JANUARY, 32) // throws DateTimeException
 
 ## Manipulating Dates and Times
 
+Note: As we can see LocalDate doesn't have a public constructor!.
+ Also if invalid date values like 40th of the month is passed, then the exception is thrown in the runtime! but it compiles.
+
  ```
 12: LocalDate date = LocalDate.of(2014, Month.JANUARY, 20);
 13: System.out.println(date); // 2014-01-20
