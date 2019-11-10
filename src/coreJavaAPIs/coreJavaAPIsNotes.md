@@ -435,6 +435,18 @@ int numAnimals3[];
 int numAnimals4 [];
 ```
 
+Some interesting Array decleration examples:
+
+```
+int[][] scores = new int[5][]; //legal
+Object[][][] cubbies = new Object[3][0][5]; //legal
+String beans[] = new beans[6]; // wouldn't compile
+java.util.Date[] dates[] = new java.util.Date[2][]; //legal
+int types[][] types = new int[]; // doens't specify the size isn't legal
+int types[][] java = new int[][]; // doens't specify the size isn't legal
+
+```
+
 Let's look at this example:
 
 ```
