@@ -849,6 +849,7 @@ LocalDate.of(2015, Month.JANUARY, 32) // throws DateTimeException
 
 Note: As we can see LocalDate doesn't have a public constructor!.
  Also if invalid date values like 40th of the month is passed, then the exception is thrown in the runtime! but it compiles.
+ Importantly dates are also immutable objects so don't forget to reassign them!.
 
  ```
 12: LocalDate date = LocalDate.of(2014, Month.JANUARY, 20);
