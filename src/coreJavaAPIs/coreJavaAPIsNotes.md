@@ -565,6 +565,7 @@ ArrayList has many methods , but you only need to know a handful of them, even f
 We should also know that ArrayList implements toString() so that we can see the contents just by printing it.
 
 Note:  Arrays and Arraylists are both ordered meaning they have indexes!
+Note2: ArrayList overrides equals while an array doesn't.
 
 <b>add()</b>
 
