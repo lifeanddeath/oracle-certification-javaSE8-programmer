@@ -13,6 +13,19 @@ public class EqualsExample {
 		
 		// if (number == value )  // wouldn't work because they are different types.
 	    if (number.equals(result)) System.out.println("dont expect that this works -4-");// equals doesn't care about type so it would compile but not work
+	    
+	    String a = "";
+	    a += "2";
+	    a += "c";
+	    a += "false";
+	    
+	    System.out.println(a); 
+	    
+	    if ( a == "2cfalse") System.out.println("==");
+	    if (a.equals("2cfalse")) System.out.println("equals");
+	    
+	    String b  = "example";
+	    if (b == "example")  System.out.println("this works"); // it does work
 	}
 
 }
