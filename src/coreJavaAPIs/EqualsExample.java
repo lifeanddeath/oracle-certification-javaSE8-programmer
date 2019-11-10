@@ -12,7 +12,7 @@ public class EqualsExample {
 		if (number.equals(String.valueOf(value))) System.out.println("This might not work -3-"); //works
 		
 		// if (number == value )  // wouldn't work because they are different types.
-		if (number.equals(result)) System.out.println("dont expect that this works -4-");// equals doesn't care about type so it would compile but not work
+	    if (number.equals(result)) System.out.println("dont expect that this works -4-");// equals doesn't care about type so it would compile but not work
 	}
 
 }
