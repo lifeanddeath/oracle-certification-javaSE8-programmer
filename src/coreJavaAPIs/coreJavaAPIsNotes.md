@@ -909,6 +909,8 @@ date = date.plusMinutes(1); // DOES NOT COMPILE
 
 Let's imagine, our zoo performs animal enrichment activities to give the animals something fun to do. The head zookeeper has decided to switch toys every month. This system will continue for three months to see how it works out. 
 
+Note: periods doesn't allow chaining!
+
  ```
 public static void main(String[] args) {
 	LocalDate start = LocalDate.of(2015, Month.JANUARY, 1);
