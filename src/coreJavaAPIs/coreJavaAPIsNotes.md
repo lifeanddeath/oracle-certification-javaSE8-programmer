@@ -18,6 +18,8 @@ String s = "Hello";
 		if ("Hello" == t)System.out.println("five");		// would be wrong because specifically different object is instantiated
 ```
 
+In string and string builder questions, it is important to control that == operator is used for object and type reference, whereas equals is only for comparing values.
+
 ## Concatenation 
 
 Placing one String before the other String and combining them together is called string concatenation. 
