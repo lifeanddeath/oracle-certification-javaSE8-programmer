@@ -497,6 +497,12 @@ for (String string : strings)
 System.out.print(string + " ");  // 10 100 9 because it sorts alphabetically
 ```
 
+## Size 
+
+An array size can be calculated by its default property called length. It is important to realize that its not a method!.
+
+Example:
+
 ## Searching
 
 Java also provides a convenient way to search-- but only if the array is already sorted.
@@ -557,6 +563,8 @@ Array called space is a 3D array because it also gets one dimension from int key
 
 ArrayList has many methods , but you only need to know a handful of them, even fewer than you did for String and StringBuilder.
 We should also know that ArrayList implements toString() so that we can see the contents just by printing it.
+
+Note:  Arrays and Arraylists are both ordered meaning they have indexes!
 
 <b>add()</b>
 
