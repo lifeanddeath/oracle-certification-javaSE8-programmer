@@ -497,6 +497,21 @@ for (String string : strings)
 System.out.print(string + " ");  // 10 100 9 because it sorts alphabetically
 ```
 
+When sorting, java gives precedence to numbers and then to strings alphabetically.  If an item is not in the existing elements, it is added - in front and subtracted 1.
+
+Example:
+
+ ```
+List<String> hex = Arrays.asList("30","8","3A","FF");
+Collections.sort(hex);
+int x = Collections.binarySearch(hex, "8");
+int y = Collections.binarySearch(hex, "3A");
+int z = Collections.binarySearch(hex, "4F");
+```
+
+In such an example the sorted array would be as follows (30,3A,8,FF) in this case x would be 2, y would be 1 and z would be -3 because it would add it to second place but because its negatively changed -2 and we would add -1 as a rule making it -3.
+
+
 ## Size 
 
 An array size can be calculated by its default property called length. It is important to realize that its not a method!.
