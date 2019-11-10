@@ -5,6 +5,19 @@
 String name = "Fluffy;
 String name =  new String("Fluffy");
 
+Interesting Example:
+
+```
+String s = "Hello";
+		String t = new String(s);
+		
+		if ("Hello".equals(s)) System.out.println("one"); // it would print out one
+		if ( t == s) System.out.println("two");          // it wouldn't be correct because they refer to different objects
+		if ( t.equals(s)) System.out.println("three");   // would be correct, so it would print out three
+		if ("Hello" == s) System.out.println("four");    // would be correct because it checks from string pool.
+		if ("Hello" == t)System.out.println("five");		// would be wrong because specifically different object is instantiated
+```
+
 ## Concatenation 
 
 Placing one String before the other String and combining them together is called string concatenation. 
