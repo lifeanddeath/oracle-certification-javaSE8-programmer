@@ -66,3 +66,21 @@ public void final walk6() {} // DOES NOT COMPILE because optional modifier is af
 final public void walk7() {} // java allows optional specifiers to appear before the access modifiers.
 }
 ```
+
+## Return Type
+
+The return type might be an
+actual Java type such as String or int. If there is no return type, the void keyword is used.
+This special return type comes from the English language: void means without contents. In
+Java, we have no type there.
+
+Let's consider some examples:
+
+```
+public void walk1() { }
+public void walk2() { return; }
+public String walk3() { return ""; }
+public String walk4() { } // DOES NOT COMPILE
+public walk5() { } // DOES NOT COMPILE
+String walk6(int a) { if (a == 4) return ""; } // DOES NOT COMPILE because if a is not 4, then we dont specify a return type.
+```
