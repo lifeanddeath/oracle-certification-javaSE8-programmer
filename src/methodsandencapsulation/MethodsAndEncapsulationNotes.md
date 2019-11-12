@@ -84,3 +84,15 @@ public String walk4() { } // DOES NOT COMPILE
 public walk5() { } // DOES NOT COMPILE
 String walk6(int a) { if (a == 4) return ""; } // DOES NOT COMPILE because if a is not 4, then we dont specify a return type.
 ```
+
+## Method Name 
+
+Method names follow the same rules as we practiced with variable names in Chapter 1. To review, an identifier may only contain letters, numbers or $,_ signs. Importantly, the first character is not allowed to be a number , and reserved words are not allowed.
+
+```
+public void walk1() { }
+public void 2walk() { } // DOES NOT COMPILE
+public walk3 void() { } // DOES NOT COMPILE
+public void Walk_$() { }
+public void() { } // DOES NOT COMPILE
+```
