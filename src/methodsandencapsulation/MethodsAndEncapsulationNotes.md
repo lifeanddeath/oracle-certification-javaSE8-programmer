@@ -96,3 +96,43 @@ public walk3 void() { } // DOES NOT COMPILE
 public void Walk_$() { }
 public void() { } // DOES NOT COMPILE
 ```
+
+## Working with Varargs
+
+A method may use a vararg parameter(variable argument) as if it is an array. It is a little different than array, though. A vararg parameter must be the last element in a method's parameter list. This implies you are only allowed to have one vararg parameter per method.
+
+```
+public void walk1(int... nums) { }
+public void walk2(int start, int... nums) { }
+public void walk3(int... nums, int start) { } // DOES NOT COMPILE
+public void walk4(int... start, int... nums) { } // DOES NOT COMPILE
+```
+```
+15: public static void walk(int start, int... nums) {
+16: System.out.println(nums.length);
+17: }
+18: public static void main(String[] args) {
+19: walk(1); // 0
+20: walk(1, 2); // 1
+21: walk(1, 2, 3); // 2
+22: walk(1, new int[] {4, 5}); // 2
+23: }
+```
+
+## Applying Access Modifiers
+
+### Private Access
+
+Private access is easy. Only code in the same class can call private methods or access private fields.
+
+### Defaul(Package Private) Access
+
+When there is no access modifier, Java uses the default, which is package private access. This means that the member is private to classes in the same package. In other words, only classes in the package may access it.
+
+### Protected Access
+
+Protected access allows everything that default package access allows and more. The protected access modifier adds ability to access members of a parent class.
+
+### Public Access
+
+Anyone can call from anywhere!.
