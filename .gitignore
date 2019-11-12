@@ -1,3 +1,4 @@
+### Eclipse ###
 .metadata
 bin/
 tmp/
@@ -8,4 +9,17 @@ local.properties
 .settings/
 .loadpth
 .recommenders
+
+# Locally stored "Eclipse launch configurations"
 *.launch
+
+### Eclipse Patch ###
+# Eclipse Core
+.project
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+### IntelliJ ###
+.idea
+*.iml
