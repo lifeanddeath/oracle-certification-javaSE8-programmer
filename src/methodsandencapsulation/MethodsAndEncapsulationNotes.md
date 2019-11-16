@@ -136,3 +136,22 @@ Protected access allows everything that default package access allows and more. 
 ### Public Access
 
 Anyone can call from anywhere!.
+
+## Static Methods and Fields
+
+Static methods have two main purpose:
+
+1) For utility or helper methods that don't require any object state. Since there is no need to access instance variables, having static methods eliminates the need for the called to instantiate the object just to call the method.
+
+2) For state that is shared by all instances of a class, like a counter. All instances must share the same state. Methods that merely use that state should be static as well.
+
+```
+Koala.count = 4;
+Koala koala1 = new Koala();
+Koala koala2 = new Koala();
+koala1.count = 6;
+koala2.count = 5;
+System.out.println(Koala.count);
+```
+
+It prints as 5. There is only one count variable since it is static. It is set to 4,6 and finally winds up as 5. All the koala variables are just distractions.
