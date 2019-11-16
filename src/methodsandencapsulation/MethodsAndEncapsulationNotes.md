@@ -361,3 +361,65 @@ s.append("Webby");
 ```
 
 In this case, output is Webby because the method merely calls a method on the parameter. It doesn't reassign name to a different object.
+
+Let's take a look at this example:
+
+```
+1: public class ReturningValues {
+2: 	public static void main(String[] args) {
+3: 	int number = 1; // 1
+4: 	String letters = "abc"; // abc
+5: 	number(number); // 1
+6: 	letters = letters(letters); // abcd
+7: 	System.out.println(number + letters); // 1abcd
+8: }
+9: 	public static int number(int number) {
+10: 		number++;
+11: 		return number;
+12: 	}
+13: public static String letters(String letters) {
+14: 		letters += "d";
+15: 		return letters;
+16: 	}
+17: }
+```
+Line 5 doesn't return anything so it is quite tricky. On the other hand line 6 reassings it so it becomes abcd. 
+
+
+## Overloading Methods
+
+Method overloading occurs when there are different method signatures with the same name but different type  parameters. We have been calling overloaded methods for a while. System.out.println and StringBuilder’s append methods provide many overloaded versions so you can pass just
+about anything to them without having to think about it. 
+
+Some examples for method overloading:
+
+```
+public void fly(int numMiles) { }
+public void fly(short numFeet) { }
+public boolean fly() { return false; }
+void fly(int numMiles, short numFeet) { }
+public void fly(short numFeet, int numMiles) throws Exception { }
+```
+
+We can also see these tricky examples:
+
+```
+public void fly(int numMiles) { }
+public int fly(int numMiles) { } // DOES NOT COMPILE
+```
+
+```
+public void fly(int numMiles) { }
+public static void fly(int numMiles) { } // DOES NOT COMPILE
+```
+
+## Overloading and Varargs
+
+```
+public void fly(int[] lengths) { }
+public void fly(int... lengths) { } // DOES NOT COMPILE
+```
+Trick question! Remember that Java treats varargs as if they were an array. This means
+that the method signature is the same for both methods. Since we are not allowed to overload
+methods with the same parameter list, this code doesn't compile. Even though the code
+doesn't look the same, it compiles to the same parameter list.
