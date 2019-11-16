@@ -455,3 +455,30 @@ Java will match the int numMiles version. Java tries to use the most specifi c p
 list it can fi nd. When the primitive int version isn't present, it will autobox. However, when
 the primitive int version is provided, there is no reason for Java to do the extra work of
 autoboxing.
+
+## Creating Constuctors
+
+Example: 
+
+
+```
+public class Bunny {
+	public Bunny() {
+		System.out.println("constructor");
+	}
+}
+```
+
+why one of these these two wouldn't work?
+
+```
+public bunny() { } // DOES NOT COMPILE
+public void Bunny() { }
+}
+```
+
+The fi rst one doesn't match the classname because Java is case sensitive. Since it doesn't
+match, Java knows it can't be a constructor and is supposed to be a regular method.
+However, it is missing the return type and doesn't compile. The second method is a perfectly
+good method, but is not a constructor because it has a return type.
+
