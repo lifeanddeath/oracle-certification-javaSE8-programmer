@@ -423,3 +423,35 @@ Trick question! Remember that Java treats varargs as if they were an array. This
 that the method signature is the same for both methods. Since we are not allowed to overload
 methods with the same parameter list, this code doesn't compile. Even though the code
 doesn't look the same, it compiles to the same parameter list.
+
+We can make this work by this way though:
+
+```
+fly(new int[] { 1, 2, 3 });
+```
+
+However, you can only call the varargs version with stand-alone parameters:
+
+```
+fly(1, 2, 3);
+```
+
+## Autoboxing
+
+IN the previous chapter, we saw how java will convert a primitive int to an object Integer to add it to an ArrayList though the wonders of autoboxing. This works for us too.
+
+```
+public void fly(Integer numMiles) { }
+```
+
+This means calling fly(3); will call the previous method as expected. However, what
+happens if we have both a primitive and an integer version?
+
+```
+public void fly(int numMiles) { }
+public void fly(Integer numMiles) { }
+```
+Java will match the int numMiles version. Java tries to use the most specifi c parameter
+list it can fi nd. When the primitive int version isn't present, it will autobox. However, when
+the primitive int version is provided, there is no reason for Java to do the extra work of
+autoboxing.
