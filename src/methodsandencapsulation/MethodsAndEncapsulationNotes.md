@@ -319,5 +319,45 @@ import static statics.A.TYPE;
 import static statics.B.TYPE; // DOES NOT COMPILE
 ```
 
+## Passing Data Among Methods
 
+Java is a pass by value language. This means that a copy of the variable is made and the method receives that copy. Assignments made in the method do not affect the caller.
 
+```
+2: public static void main(String[] args) {
+3: 	int num = 4;
+4: 	newNumber(5);
+5: 	System.out.println(num); // 4
+6: 	}
+7: 	public static void newNumber(int num) {
+8: 	num = 8;
+9: 	}
+```
+
+Lets try an example with reference type.
+
+```
+public static void main(String[] args) {
+String name = "Webby";
+speak(name);
+System.out.println(name);
+}
+public static void speak(String name) {
+name = "Sparky";
+}
+```
+
+It'll again print as Webby.
+
+```
+public static void main(String[] args) {
+StringBuilder name = new StringBuilder();
+speak(name);
+System.out.println(name); // Webby
+}
+public static void speak(StringBuilder s) {
+s.append("Webby");
+}
+```
+
+In this case, output is Webby because the method merely calls a method on the parameter. It doesn't reassign name to a different object.
