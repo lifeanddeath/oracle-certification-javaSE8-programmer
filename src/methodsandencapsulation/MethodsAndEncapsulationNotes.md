@@ -241,3 +241,83 @@ private static final ArrayList<String> values = new ArrayList<>();
 ```
 
 Above example actually does compile.  values is a reference variable. We are allowed to call methods on reference variables. All the compiler can do is check that we don't try to reassign the final values to point to a different object.
+
+## Static Initialization
+
+```
+private static final int NUM_SECONDS_PER_HOUR;
+	static {
+	int numSecondsPerMinute = 60;
+	int numMinutesPerHour = 60;
+	NUM_SECONDS_PER_HOUR = numSecondsPerMinute * numMinutesPerHour;
+}
+}
+```
+The static initializer runs when the class is fi rst used. The statements in it run
+and assign any static variables as needed. There is something interesting about
+this example. We just got through saying that fi nal variables aren’t allowed to
+be reassigned. The key here is that the static initializer is the fi rst assignment.
+And since it occurs up front, it is okay.
+Let’s try another example to make sure you understand the distinction:
+
+```
+14: private static int one;
+15: private static final int two;
+16: private static final int three = 3;
+17: private static final int four; // DOES NOT COMPILE
+18: static {
+19: one = 1;
+20: two = 2;
+21: three = 3; // DOES NOT COMPILE
+22: two = 4; // DOES NOT COMPILE
+23: }
+```
+## Static Imports
+
+```
+import java.util.List;
+import java.util.Arrays;
+public class Imports {
+public static void main(String[] args) {
+List<String> list = Arrays.asList("one", "two");
+}
+}
+```
+Also could be called like this:
+
+```
+import java.util.List;
+import static java.util.Arrays.asList; // static import
+
+public class StaticImports {
+	public static void main(String[] args) {
+		List<String> list = asList("one", "two"); // no Arrays.
+} }
+```
+Let's take a look at a tricky example:
+
+```
+1: import static java.util.Arrays; // DOES NOT COMPILE
+2: import static java.util.Arrays.asList;
+3: static import java.util.Arrays.*; // DOES NOT COMPILE
+
+4: public class BadStaticImports {
+5: 	public static void main(String[] args) {
+6: 		Arrays.asList("one"); // DOES NOT COMPILE
+7: } }
+```
+
+Line 1 tries to use a static import to import a class. Remember that static imports are
+only for importing static members. Regular imports are for importing a class. Line 3 tries
+to see if you are paying attention to the order of keywords. The syntax is import static
+and not vice versa. Line 6 is sneaky. We imported the asList method on line 2. However,
+we did not import the Arrays class anywhere. This makes it okay to write asList("one");
+but not Arrays.asList("one");.
+
+```
+import static statics.A.TYPE;
+import static statics.B.TYPE; // DOES NOT COMPILE
+```
+
+
+
