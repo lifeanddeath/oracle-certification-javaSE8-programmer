@@ -155,3 +155,89 @@ System.out.println(Koala.count);
 ```
 
 It prints as 5. There is only one count variable since it is static. It is set to 4,6 and finally winds up as 5. All the koala variables are just distractions.
+
+## Static vs. Instance
+
+A static member cannot call an instance member. This shouldn't be a suprise since static doesn't require any instance of the classs to be around.
+
+A typical mistake that is done by rookie programmers:
+
+```
+public class Static {
+	private String name = "Static class";
+	public static void first() { }
+	public static void second() { }
+	public void third() { System.out.println(name); }
+	public static void main(String args[]) {
+		first();
+		second();
+		third(); // DOES NOT COMPILE
+} }
+```
+
+Let's consider the following example:
+
+```
+1: public class Gorilla {
+2: 	public static int count;
+3: 	public static void addGorilla() { count++; }
+4: 	public void babyGorilla() { count++; }
+5: 	public void announceBabies() {
+6: 		addGorilla();
+7: 		babyGorilla();
+8: }
+9: 	public static void announceBabiesToEveryone() {
+10: 		addGorilla();
+11: 		babyGorilla(); // DOES NOT COMPILE
+12: }
+13: public int total;
+14: public static average = total / count; // DOES NOT COMPILE
+15: }
+```
+
+Lines 3 and 4 are fi ne because both static and instance methods can refer to a static
+variable. Lines 5–8 are fi ne because an instance method can call a static method. Line 11
+doesn’t compile because a static method cannot call an instance method. Similarly, line 14
+doesn’t compile because a static variable is trying to use an instance variable.
+
+```
+public class Counter {
+	private static int count;
+	public Counter() { count++; }
+	public static void main(String[] args) {
+		Counter c1 = new Counter();
+		Counter c2 = new Counter();
+		Counter c3 = new Counter();
+		System.out.println(count); // 3
+	}
+}
+```
+
+## Static variables
+
+Some static variables are meant to change as the program runs. Counter are a common example of this. We want the count to icrease over time. Just as with instance variables, you can initialize a static variable on the line it is declared.
+
+```
+public class Initializers {
+	private static int counter = 0; // initialization
+}
+```
+
+Other static variables are meant t onever change during the program. This type of variables is known as a constant. It uses the final modifier to ensure the variable never changes. Static final constants use a different naming convention than other variables. They use all uppercase letters with underscores between words .
+
+```
+public class Initializers {
+	private static final int NUM_BUCKETS = 45;
+	public static void main(String[] args) {
+	NUM_BUCKETS = 5; // DOES NOT COMPILE
+} }
+```
+
+```
+private static final ArrayList<String> values = new ArrayList<>();
+	public static void main(String[] args) {
+	values.add("changed");
+}
+```
+
+Above example actually does compile.  values is a reference variable. We are allowed to call methods on reference variables. All the compiler can do is check that we don't try to reassign the final values to point to a different object.
