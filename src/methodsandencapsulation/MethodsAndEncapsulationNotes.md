@@ -700,3 +700,21 @@ the instance variables and instance initializers. There are two of those: on lin
 They both call the add() method and print 6 and 8, respectively. Finally, we go on to rule 4
 and call the constructor, which calls the add() method one more time and prints 5.
 
+## Encapsulating Data
+
+When there is a package private access, that means any class in the package can set the field. WE no longer have control of what gets set in our own class. 
+
+Encapsulation means we set up the class so only methods in the class with the variables can refer to the instance variables. Callers are required to use these methods. Let's take a look at our newly encapsulated Swan Class.
+
+```
+1: public class Swan {
+2: private int numberEggs; // private
+3: public int getNumberEggs() { // getter
+4: return numberEggs;
+5: }
+6: public void setNumberEggs(int numberEggs) { // setter
+7: if (numberEggs >= 0) // guard condition
+8: this.numberEggs = numberEggs;
+9: } }
+```
+
