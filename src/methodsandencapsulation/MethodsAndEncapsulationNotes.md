@@ -482,3 +482,108 @@ match, Java knows it can't be a constructor and is supposed to be a regular meth
 However, it is missing the return type and doesn't compile. The second method is a perfectly
 good method, but is not a constructor because it has a return type.
 
+## Default Constructor 
+
+Every class in java has a constructor whether you code it or not. If you don't include any constructors in the class, Java will create one for you without any parameters.
+
+This java-created constructor is called the default constructor.Sometimes we call it the default no-arguments constructor for clarity. 
+
+```
+public class Rabbit {
+public static void main(String[] args) {
+Rabbit rabbit = new Rabbit(); // Calls default constructor
+}
+}
+```
+
+We keep saying generated. This happens during the compile step. If you look at the file with the .java extension, the constructor will stil be missing.  It is only in the compiled file with the .class extension it makes an appearance.
+
+Let's take a look at the following example:
+
+```
+1: public class RabbitsMultiply {
+2: public static void main(String[] args) {
+3:	 Rabbit1 r1 = new Rabbit1();
+4: 	 Rabbit2 r2 = new Rabbit2();
+5:	 Rabbit3 r3 = new Rabbit3(true);
+6: 	 Rabbit4 r4 = new Rabbit4(); // DOES NOT COMPILE
+7: } }
+```
+
+Line 3 calls the generated default no-argument constructor. Lines 4 and 5 call the userprovided
+constructors. Line 6 does not compile. Rabbit4 made the constructor private so
+that other classes could not call it.
+Having a private constructor in a class tells the compiler not to provide a default noargument
+constructor. It also prevents other classes from instantiating the class. This is
+useful when a class only has static methods or the class wants to control all calls to create
+new instances of itself.
+
+## Overloading Constructors
+
+You can have multiple constructors
+in the same class as long as they have different method signatures. When overloading methods,
+the method name and parameter list needed to match. With constructors, the name is
+always the same since it has to be the same as the name of the class. This means constructors
+must have different parameters in order to be overloaded.
+
+Example:
+
+```
+public class Hamster {
+	private String color;
+	private int weight;
+	public Hamster(int weight) { // first constructor
+		this.weight = weight;
+		color = "brown";
+	}	
+	public Hamster(int weight, String color) { // second constructor
+		this.weight = weight;
+		this.color = color;
+	}
+}
+
+```
+
+There  is a duplication so we should fix it!
+
+```
+public Hamster(int weight) {
+Hamster(weight, "brown"); // DOES NOT COMPILE
+}
+```
+This will not work. Constructors can be called only by writing new before the name of the
+constructor. They are not like normal methods that you can just call. What happens if we
+stick new before the constructor name?
+
+```
+public Hamster(int weight) {
+new Hamster(weight, "brown"); // Compiles but does not do what we want
+}
+```
+
+This attempt does compile. It doesn't do what we want, though. When the constructor
+with one parameter is called, it creates an object with the default weight and color. It then
+constructs a different object with the desired weight and color and ignores the new object.
+That's not what we want. We want weight and color set on the object we are trying to
+instantiate in the first place.
+
+Java provides a solution: this—yes, the same keyword we used to refer to instance variables.
+When this is used as if it were a method, Java calls another constructor on the same
+instance of the class.
+
+```
+public Hamster(int weight) {
+this(weight, "brown");
+}
+```
+```
+3: public Hamster(int weight) {
+4: System.out.println("in constructor");
+5: // ready to call this
+6: this(weight, "brown"); // DOES NOT COMPILE
+7: }
+```
+
+Even though a print statement on line 4 doesn't change any variables, it is still a Java statement
+and is not allowed to be inserted before the call to this(). The comment on line 5 is
+just fine. Comments don't run Java statements and are allowed anywhere.
