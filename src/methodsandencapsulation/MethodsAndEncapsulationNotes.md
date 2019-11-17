@@ -749,3 +749,100 @@ concepts. This means you aren’t truly doing functional programming yet. You’
 lambdas again on the OCP exam.
 In this section, we’ll cover an example of why lambdas are helpful, the syntax of
 lambdas, and how to use predicates.
+
+## Lambda Example
+
+Lets consider some scenario in which we want to achieve a specific task:
+
+Task: Our goal is to print out all the animals in a list according to some criteria. We’ll show you
+how to do this without lambdas to illustrate how lambdas are useful. We start out with the
+Animal class:
+
+```
+public class Animal {
+	private String species;
+	private boolean canHop;
+	private boolean canSwim;
+	public Animal(String speciesName, boolean hopper, boolean swimmer) {
+		species = speciesName;
+		canHop = hopper;
+		canSwim = swimmer;
+	}
+	public boolean canHop() { return canHop; }
+	public boolean canSwim() { return canSwim; }
+	public String toString() { return species; }
+}
+```
+
+We plan to write a lot of different checks, so we want an interface. You’ll learn more
+about interfaces in the next chapter. For now, it is enough to remember that an interface
+specifies the methods that our class needs to implement:
+
+```
+public interface CheckTrait {	
+	boolean test(Animal a);
+}
+```
+
+The first thing we want to check is whether the Animal can hop. We provide
+a class that can check this:
+
+```
+public class CheckIfHopper implements CheckTrait {
+	public boolean test(Animal a) {
+		return a.canHop();
+	}
+}
+```
+
+```
+1: public class TraditionalSearch {
+2: 	public static void main(String[] args) {
+3: 	List<Animal> animals = new ArrayList<Animal>(); // list of animals
+4: 	animals.add(new Animal("fish", false, true));
+5: 	animals.add(new Animal("kangaroo", true, false));
+6: 	animals.add(new Animal("rabbit", true, false));
+7: 	animals.add(new Animal("turtle", false, true));
+8:
+9: 	print(animals, new CheckIfHopper()); // pass class that does check
+10: }
+11: private static void print(List<Animal> animals, CheckTrait checker) {
+12: 	for (Animal animal : animals) {
+13: 		if (checker.test(animal)) // the general check
+14: 			System.out.print(animal + " ");
+15: 	}
+16: 	System.out.println();
+17: 	}
+18: }
+```
+The print() method on line 11 method is very general—it can check for any trait. This
+is good design. It shouldn’t need to know what specifi cally we are searching for in order to
+print a list of animals.
+
+Now what happens if we want to print the Animals that swim? Sigh. We need to write
+another class CheckIfSwims. Granted, it is only a few lines. Then we need to add a new line
+under line 9 that instantiates that class. That’s two things just to do another check.
+Why can’t we just specify the logic we care about right here? Turns out that we can with
+lambda expressions. We could repeat that whole class here and make you fi nd the one line
+that changed. Instead, we’ll just show you. We could replace line 9 with the following, which
+uses a lambda:
+
+```
+9: print(animals, a -> a.canHop());
+```
+
+Here’s that other line:
+
+```
+print(animals, a -> a.canSwim());
+```
+How about Animals that cannot swim?
+
+```
+print(animals, a -> ! a.canSwim());
+
+```
+
+Deferred execution
+means that code is specifi ed now but will run later. In this case, later is when the print()
+method calls it.
