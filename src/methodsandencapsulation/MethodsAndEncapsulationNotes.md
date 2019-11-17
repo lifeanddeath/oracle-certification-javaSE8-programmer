@@ -587,3 +587,22 @@ this(weight, "brown");
 Even though a print statement on line 4 doesn't change any variables, it is still a Java statement
 and is not allowed to be inserted before the call to this(). The comment on line 5 is
 just fine. Comments don't run Java statements and are allowed anywhere.
+
+## Final Fields
+
+As we saw earlier in the chapter, final instance variables must be assigned a value exactly once.  We saw this happen in the line of the decleration and in an instance initializer. There is one more location this assignment can be done: in the constructor.
+
+```
+public class MouseHouse {
+	private final int volume;
+	private final String name = "The Mouse House";
+	
+	public MouseHouse(int length, int width, int height) {
+		volume = length * width * height;
+}}
+```
+
+The constructor is part of the initialization process, so it is allowed to assign final
+instance variables in it. By the time the constructor completes, all final instance variables
+must have been set.
+
