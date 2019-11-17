@@ -606,3 +606,97 @@ The constructor is part of the initialization process, so it is allowed to assig
 instance variables in it. By the time the constructor completes, all final instance variables
 must have been set.
 
+## Order of Initialization
+
+The rules are as follows:
+
+1. If there is a superclass, initialize it first (we’ll cover this rule in the next chapter. For
+now, just say “no superclass” and go on to the next rule.)
+
+2. Static variable declarations and static initializers in the order they appear in the file.
+
+3. Instance variable declarations and instance initializers in the order they appear in the file.
+
+4. The constructor.
+
+Let's consider the following example:
+
+```
+1: public class InitializationOrderSimple {
+2:	 private String name = "Torchie";
+3: 	{ System.out.println(name); }
+4:	 private static int COUNT = 0;
+5: 	static { System.out.println(COUNT); }
+6: 	static { COUNT += 10; System.out.println(COUNT); }
+7: 	public InitializationOrderSimple() {
+8: 		System.out.println("constructor");
+9: } }
+
+1: public class CallInitializationOrderSimple {
+2: 	public static void main(String[] args) {
+3: 		InitializationOrderSimple init = new InitializationOrderSimple();
+4: } }
+```
+
+The output of the code will be as follows:
+
+0
+
+10
+
+Torchie
+
+constructor
+
+```
+1: 	public class InitializationOrder {
+2: 		private String name = "Torchie";
+3: 		{ System.out.println(name); }
+4: 		private static int COUNT = 0;
+5: 		static { System.out.println(COUNT); }
+6: 		{ COUNT++; System.out.println(COUNT); }
+
+7: 		public InitializationOrder() {
+8: 			System.out.println("constructor");
+9: 	}
+	
+10: 	public static void main(String[] args) {
+11: 		System.out.println("read to construct");
+12: 		new InitializationOrder();
+13: 	}
+14: }
+```
+
+0
+
+read to construct
+
+Torchie
+
+1
+
+constructor
+
+Let's take a look at the hardest example with this topic:
+
+```
+1: public class YetMoreInitializationOrder {
+2: 	static { add(2); }
+3: 	static void add(int num) { System.out.print(num + " "); }
+4: 	YetMoreInitializationOrder() { add(5); }
+5: 	static { add(4); }
+6: 	{ add(6); }
+7: 	static { new YetMoreInitializationOrder(); }
+8: 	{add(8); }
+9: 	public static void main(String[] args) { } }
+```
+
+The correct answer is 2 4 6 8 5. Let's walk through why that is. There is no superclass,
+so we jump right to rule 2—the statics. There are three static blocks: on lines 2, 5, and 7.
+They run in that order. The static block on line 2 calls the add() method, which prints 2.
+The static block on line 5 calls the add() method, which prints 4. The last static block,
+on line 7, calls new to instantiate the object. This means we can go on to rule 3 to look at
+the instance variables and instance initializers. There are two of those: on lines 6 and 8.
+They both call the add() method and print 6 and 8, respectively. Finally, we go on to rule 4
+and call the constructor, which calls the add() method one more time and prints 5.
+
