@@ -717,4 +717,13 @@ Encapsulation means we set up the class so only methods in the class with the va
 8: this.numberEggs = numberEggs;
 9: } }
 ```
+## Createing Immutable Classes
 
+Encapsulating data is helpful because it prevents callers from making uncontrolled changes to your class. Another common technique is making classes immutable so they cannot be
+changed at all. Immutable classes are helpful because you know they will always be the same. You can
+pass them around your application with a guarantee that the caller didn’t change anything.
+This helps make programs easier to maintain. It also helps with performance by limiting
+the number of copies, as you saw with String in Chapter 3, “Core Java APIs.”
+One step in making a class immutable is to omit the setters. But wait: we still want the
+caller to be able to specify the initial value—we just don’t want it to change after the object
+is created. Constructors to the rescue!
