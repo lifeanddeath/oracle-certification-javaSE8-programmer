@@ -840,9 +840,94 @@ How about Animals that cannot swim?
 
 ```
 print(animals, a -> ! a.canSwim());
-
 ```
 
 Deferred execution
 means that code is specifi ed now but will run later. In this case, later is when the print()
 method calls it.
+
+## Lambda Syntax
+
+One of the simplest lambda expressions you can write is the one you just saw:
+
+```
+a -> a.canHop();
+```
+
+This means that Java should call a method with an Animal parameter that returns a
+boolean value that’s the result of a.canHop(). We know all this because we wrote the code.
+But how does Java know?
+
+Java replies on context when figuring out what lambda expressions mean. We are passing
+this lambda as the second parameter of the print() method. That method expects a
+CheckTrait as the second parameter. Since we are passing a lambda instead, Java tries to
+map our lambda to that interface:
+
+```
+boolean test(Animal a);
+```
+
+Since that interface’s method takes an Animal, that means the lambda parameter has to
+be an Animal. And since that interface’s method returns a boolean, we know the lambda
+returns a boolean.
+
+The syntax of lambdas is tricky because many parts are optional. These two lines do the
+exact same thing:
+
+```
+a -> a.canHop()
+(Animal a) -> { return a.canHop(); }
+```
+
+Let’s look at what is going on here. The first example, shown in Figure 4.5, has
+three parts:
+
+■ Specify a single parameter with the name a
+
+■ The arrow operator to separate the parameter and body
+
+■ A body that calls a single method and returns the result of that method
+
+Let’s look at some examples of valid lambdas. Pretend that there are valid interfaces that
+can consume a lambda with zero, one, or two String parameters.
+
+```
+3: print(() -> true); // 0 parameters
+4: print(a -> a.startsWith("test")); // 1 parameter
+5: print((String a) -> a.startsWith("test")); // 1 parameter
+6: print((a, b) -> a.startsWith("test")); // 2 parameters
+7: print((String a, String b) -> a.startsWith("test")); // 2 parameters
+```
+
+Notice that all of these examples have parentheses around the parameter list except the
+one that takes only one parameter and doesn’t specify the type. Line 3 takes 0 parameters
+and always returns the Boolean true. Line 4 takes one parameter and calls a method on
+it, returning the result. Line 5 does the same except that it explicitly defi nes the type of the
+variable. Lines 6 and 7 take two parameters and ignore one of them—there isn’t a rule that
+says you must use all defined parameters.
+
+```
+print(a, b -> a.startsWith("test")); // DOES NOT COMPILE
+print(a -> { a.startsWith("test"); }); // DOES NOT COMPILE
+print(a -> { return a.startsWith("test") }); // DOES NOT COMPILE
+```
+The fi rst line needs parentheses around the parameter list. Remember that the parentheses
+are only optional when there is one parameter and it doesn’t have a type declared. The
+second line is missing the return keyword. The last line is missing the semicolon.
+You might have noticed all of our lambdas return a boolean. That is because the scope
+for the OCA exam limits what you need to learn.
+
+There is one more issue you might see with lambdas. We’ve been defi ning an argument
+list in our lambda expressions. Since Java doesn’t allow us to redeclare a local variable, the
+following is an issue:
+
+```
+(a, b) -> { int a = 0; return 5;} // DOES NOT COMPILE
+```
+
+We tried to redeclare a, which is not allowed. By contrast, the following line is okay
+because it uses a different variable name:
+
+```
+(a, b) -> { int c = 0; return 5;}
+```
