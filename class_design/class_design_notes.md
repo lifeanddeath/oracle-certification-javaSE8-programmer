@@ -43,3 +43,32 @@ broader than the class of any exception thrown in the parent class method.
 
 4. If the method returns a value, it must be the same or a subclass of the method in the
 parent class, known as covariant return types.
+
+
+## Creating Abstract Classes 
+
+Your
+goal is to provide some reusable variables and methods to developers in the parent class,
+whereas the developers provide specifi c implementations or overrides of other methods in
+the child classes. Furthermore, let’s say you also don’t want an instance of the parent class
+to be instantiated unless it is an instance of the child class.
+
+An abstract class is a class that is marked with the abstract keyword and cannot be instantiated.
+An abstract method is a method marked with the abstract keyword defined in an
+abstract class, for which no implementation is provided in the class in which it is declared.
+
+```
+public abstract class Animal {
+protected int age;
+public void eat() {
+System.out.println("Animal is eating");
+}
+public abstract String getName();
+}
+public class Swan extends Animal {
+public String getName() {
+return "Swan";
+}
+}
+
+```
