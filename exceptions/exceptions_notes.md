@@ -300,3 +300,17 @@ For the OCA exam, you only need to know that these are checked exceptions. Also 
 in mind that FileNotFoundException is a subclass of IOException, although the exam will
 remind you of that fact if it comes up. You’ll see these two exceptions in more detail on the
 OCP exam.
+
+# Errors
+
+Errors extend the Error class. They are thrown by the JVM and should not be handled or
+declared. Errors are rare, but you might see these:
+
+*ExceptionInInitializerError* Thrown by the JVM when a static initializer throws
+an exception and doesn’t handle it
+
+*StackOverflowError* Thrown by the JVM when a method calls itself too many times
+(this is called infinite recursion because the method typically calls itself without end)
+
+*NoClassDefFoundError* Thrown by the JVM when a class that the code uses is available
+at compile time but not runtime
