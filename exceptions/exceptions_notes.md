@@ -129,3 +129,47 @@ public void visitMonkeys() {
 	System.out.print("not today");	
 	}
 }
+```
+
+This time it works perfectly fine.
+
+```
+public void visitMonkeys() {
+try {
+	seeAnimal();
+} catch (ExhibitClosed e) {
+	System.out.print("not today");
+} catch (ExhibitClosedForLunch e) {// DOES NOT COMPILE
+	System.out.print("try back later");
+}
+}
+
+```
+
+This time, if the more specifi c ExhibitClosedForLunch exception is thrown, the catch
+block for ExhibitClosed runs—which means there is no way for the second catch block to
+ever run. Java correctly tells us there is an unreachable catch block.
+
+```
+public void visitSnakes() {
+	try {
+		seeAnimal();
+	} catch (RuntimeException e) {
+	
+	System.out.print("runtime exception");
+	
+	} catch (ExhibitClosed e) {// DOES NOT COMPILE
+	
+	System.out.print("not today");
+	
+	} catch (Exception e) {
+	
+	System.out.print("exception");
+}
+}
+```
+It’s the same problem. ExhibitClosed is a RuntimeException. If it is thrown, the fi rst
+catch block takes care of it, making sure there no way to get to the second catch block.
+To review catching multiple exceptions, remember that at most one catch block will run
+and it will be the fi rst catch block that can handle it.
+
