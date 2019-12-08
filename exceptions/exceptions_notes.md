@@ -169,7 +169,7 @@ public void visitSnakes() {
 }
 ```
 It’s the same problem. ExhibitClosed is a RuntimeException. If it is thrown, the fi rst
-catch block takes care of it, making sure there no way to get to the second catch block.
+catch block takes care of it, making sure there no way to get to the second catch block.‚
 To review catching multiple exceptions, remember that at most one catch block will run
 and it will be the fi rst catch block that can handle it.
 
@@ -254,3 +254,49 @@ the catch regardless of whether an exception is thrown; it adds "finally" to res
 point, we have completed the inner try statement that ran on lines 34–44. The outer catch
 block then sees an exception was thrown and catches it on line 45; it adds "done" to result.
 
+## Recognizing Common Exception Types
+
+You need to recognize three types of exceptions for the OCA exam: runtime exceptions,
+checked exceptions, and errors. We’ll look at common examples of each type. For the
+exam, you’ll need to recognize which type of an exception it is and whether it’s thrown by
+the JVM or a programmer. So you can recognize them, we’ll show you some code examples
+for those exceptions.
+
+## Runtime Exceptions
+
+Runtime exceptions extend RuntimeException. They don’t have to be handled or declared.
+They can be thrown by the programmer or by the JVM. Common runtime exceptions
+include the following:
+
+*ArithmeticException* Thrown by the JVM when code attempts to divide by zero
+
+*ArrayIndexOutOfBoundsException* Thrown by the JVM when code uses an illegal
+index to access an array
+
+*ClassCastException* Thrown by the JVM when an attempt is made to cast an exception
+to a subclass of which it is not an instance
+
+*IllegalArgumentException* Thrown by the programmer to indicate that a method has
+been passed an illegal or inappropriate argument
+
+*NullPointerException* Thrown by the JVM when there is a null reference where an
+object is required
+
+*NumberFormatException* Thrown by the programmer when an attempt is made to convert
+a string to a numeric type but the string doesn’t have an appropriate format
+
+## Checked Exceptions
+
+Checked exceptions have Exception in their hierarchy but not RuntimeException. They
+must be handled or declared. They can be thrown by the programmer or by the JVM.
+Common runtime exceptions include the following:
+
+*FileNotFoundException* Thrown programmatically when code tries to reference a file
+that does not exist
+
+*IOException* Thrown programmatically when there’s a problem reading or writing a file
+
+For the OCA exam, you only need to know that these are checked exceptions. Also keep
+in mind that FileNotFoundException is a subclass of IOException, although the exam will
+remind you of that fact if it comes up. You’ll see these two exceptions in more detail on the
+OCP exam.
