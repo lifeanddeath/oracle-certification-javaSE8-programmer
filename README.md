@@ -13,6 +13,8 @@ Sole purpose of using & sharing the notes and code here is to get ready for the 
 2. [Operators and Statements](src/operators_and_statements/OperationsAndStatementsNotes.md)
 3. [Core Java APIs](src/coreJavaAPIs/coreJavaAPIsNotes.md)
 4. [Methods and Encapsulation](src/methodsandencapsulation/MethodsAndEncapsulationNotes.md)
+5. [Class Design] (src/class_design/class_design_notes.md)
+6. [Exceptions] (src/exceptions/exceptions_notes.md)
 
 ## Updates
 
