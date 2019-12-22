@@ -1,4 +1,4 @@
-package buildingblocks;
+package src.buildingblocks;
 
 public class InitializationOrder {
 	private String name = "Fluffy";
