@@ -4,6 +4,8 @@ public class Animal {
 	
 	int someNumber = 10;
 	
+	static int secondNumber = 20;
+	
 	 static void testClassMethod() {
 		System.out.println("this is a method in Animal Class");
 	}
