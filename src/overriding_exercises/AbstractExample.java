@@ -1,5 +1,5 @@
 package overriding_exercises;
 
-public class AbstractExample {
+public abstract class AbstractExample {
 
 }
