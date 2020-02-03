@@ -7,7 +7,7 @@ public class Example4 {
 	}
 	
 	public int getNumber() {
-		Byte a = 10;
+		short a = 10;
 		int number = printNumber(a);
 		
 		return number;
