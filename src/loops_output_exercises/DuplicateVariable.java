@@ -12,5 +12,4 @@ public class DuplicateVariable {
 		for (; ;)
 			System.out.println(3);
 	}
-
 }
