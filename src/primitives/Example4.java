@@ -15,5 +15,11 @@ public class Example4 {
 	
 	public static void main(String... args) {
 		System.out.println(new Example4().getNumber());
+		System.out.println("2"+ 33+'s');
+		System.out.println(new Integer(3));
+		
+		switch(new Integer(4)) {
+		   
+		};
 	}
 }
